@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
+    "start_dev": "react-scripts start",
+    "start": "node server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -11,14 +12,15 @@
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/icons": "latest",
-    "react-router-dom": "latest",
-    "react-redux": "latest",
-    "redux": "latest",
-    "superagent": "latest",
     "clsx": "latest",
+    "express": "^4.17.1",
     "react": "latest",
     "react-dom": "latest",
-    "react-scripts": "latest"
+    "react-redux": "latest",
+    "react-router-dom": "latest",
+    "react-scripts": "latest",
+    "redux": "latest",
+    "superagent": "latest"
   },
   "browserslist": {
     "production": [
