@@ -1,6 +1,6 @@
 import React from 'react';
+import { withRouter } from "react-router-dom";
 
-import Profile from './../../pages/Profile/Profile'
 import LoginForm from '../../components/Forms/Login/LoginForm'
 import { login } from './../../utils/requests'
 
@@ -10,8 +10,7 @@ class Login extends React.Component {
     this.state = {
       email: '',
       password: '',
-      rememberMe: false,
-      isLoggedIn: false
+      rememberMe: false
     };
 
     this.signIn = this.signIn.bind(this);
@@ -27,7 +26,7 @@ class Login extends React.Component {
   signIn() {
     login(this.state.email, this.state.password)
       .then((res) => {
-        this.setState({ isLoggedIn: !this.state.isLoggedIn });
+        this.props.history.replace('/profile');
       })
       .catch((ex) => {
         // TO DO
@@ -36,19 +35,14 @@ class Login extends React.Component {
 
   render() {
     return (
-      this.state.isLoggedIn ? (
-        // TO DO hisotry push /profile
-        <Profile {...this.props} email={this.state.email} />
-      ) : (
-          <LoginForm
-            {...this.props}
-            loginInfo={this.state}
-            signIn={this.signIn}
-            handleChange={this.handleChange}
-          />
-        )
+      <LoginForm
+        {...this.props}
+        loginInfo={this.state}
+        signIn={this.signIn}
+        handleChange={this.handleChange}
+      />
     )
   }
 }
 
-export default Login;
+export default withRouter(Login);

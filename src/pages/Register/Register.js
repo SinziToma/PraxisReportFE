@@ -1,6 +1,6 @@
 import React from 'react';
+import { withRouter } from "react-router-dom";
 
-import Profile from './../../pages/Profile/Profile'
 import RegisterForm from './../../components/Forms/Register/RegisterForm'
 import { register } from './../../utils/requests'
 
@@ -12,8 +12,7 @@ class Register extends React.PureComponent {
       name: '',
       email: '',
       password: '',
-      type: '',
-      isRegistered: false
+      type: ''
     };
 
     this.register = this.register.bind(this);
@@ -46,30 +45,23 @@ class Register extends React.PureComponent {
   register() {
     register(this.state.name, this.state.email, this.state.password, this.state.type)
       .then((res) => {
-        // TO DO redirect to login if register succesfull
-        this.setState({ isRegistered: !this.state.isRegistered });
+        this.props.history.replace('/login');
       })
       .catch((ex) => {
         // TO DO
-        var a = 1;
       });
   }
 
   render() {
     return (
-      this.state.isRegistered ? (
-        // TO DO hisotry push /profile
-        <Profile {...this.props} />
-      ) : (
-          <RegisterForm
-            {...this.props}
-            registerInfo={this.state}
-            register={this.register}
-            handleChange={this.handleChange}
-          />
-        )
+      <RegisterForm
+        {...this.props}
+        registerInfo={this.state}
+        register={this.register}
+        handleChange={this.handleChange}
+      />
     );
   }
 }
 
-export default Register
+export default withRouter(Register)

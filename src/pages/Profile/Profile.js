@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from "react-router-dom";
 
 import ProfileComponentSelector from './ProfileComponentSelector'
 import { getProfile, updateProfile } from './../../utils/requests'
@@ -56,4 +57,4 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile
+export default Profile;

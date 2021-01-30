@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 
 import { useStyles } from './utils/constants'
+
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Page from './components/Page/Page'
@@ -17,14 +18,9 @@ import Page from './components/Page/Page'
 import Profile from './pages/Profile/Profile'
 
 class App extends React.Component {
-    constructor() {
-        super();
-    }
-
     render() {
         return (
             <ThemeProvider theme={theme}>
-                {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
                 <CssBaseline />
                 <Router>
                     <Switch>
@@ -50,7 +46,7 @@ class App extends React.Component {
                         <Route exact path="/register" component={() => <Register styles={useStyles()} />} />
                         <Route exact path="/new-praxis" component={() => <Page styles={useStyles()} />} />
                         <Route exact path="/profile" component={() => <Profile styles={useStyles()} />} />
-                        <Route exact path="/history" component={() => <Page styles={useStyles()} />} />
+                        <Route exact path="/praxis-history" component={() => <Page styles={useStyles()} />} />
                     </Switch>
                 </Router>
             </ThemeProvider>

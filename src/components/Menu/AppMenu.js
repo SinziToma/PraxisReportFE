@@ -5,7 +5,6 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import { AddToPhotos, AccountBox, Folder, ExitToApp } from '@material-ui/icons';
 
@@ -33,23 +32,23 @@ class AppMenu extends React.PureComponent {
               role="presentation"
             >
               <List>
-              <ListItem>
-                  <ListItemIcon><AccountBox/></ListItemIcon>
-                  <Link href="/profile">{"Profile"}</Link>
+                <ListItem onClick={() => this.props.onSelectMenuItem('/profile')}>
+                  <ListItemIcon><AccountBox /></ListItemIcon>
+                  {"Profile"}
                 </ListItem>
-                <Divider/>
-                <ListItem>
-                  <ListItemIcon><AddToPhotos/></ListItemIcon>
-                  <Link href="/new-praxis">{"New praxis report"}</Link>
+                <Divider />
+                <ListItem onClick={() => this.props.onSelectMenuItem('/new-praxis')}>
+                  <ListItemIcon><AddToPhotos /></ListItemIcon>
+                  {"New praxis report"}
                 </ListItem>
-                <ListItem>
-                  <ListItemIcon><Folder/></ListItemIcon>
-                  <Link href="/history">{"History"}</Link>
+                <ListItem onClick={() => this.props.onSelectMenuItem('/praxis-history')}>
+                  <ListItemIcon><Folder /></ListItemIcon>
+                  {"History"}
                 </ListItem>
-                <Divider/>
-                <ListItem>
-                  <ListItemIcon><ExitToApp/></ListItemIcon>
-                  <Link href="/login">{"Log out"}</Link>
+                <Divider />
+                <ListItem onClick={() => this.props.onSelectMenuItem('/logout')}>
+                  <ListItemIcon><ExitToApp /></ListItemIcon>
+                  {"Log out"}
                 </ListItem>
               </List>
             </div>
