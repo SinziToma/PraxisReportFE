@@ -2,13 +2,15 @@ import React from 'react';
 import { withRouter } from "react-router-dom";
 
 import AppHeader from './../Header/AppHeader';
+import store from './../../redux/store'
+import { updateUserInfo } from './../../redux/actions'
 
 class Page extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            open: false,
+            open: false
         };
 
         this.toggleDrawer = this.toggleDrawer.bind(this);
@@ -21,6 +23,9 @@ class Page extends React.Component {
 
     onSelectMenuItem = (path) => {
         this.setState({ open: !this.state.open }, () => {
+            if(path == '/logout') {
+                store.dispatch(updateUserInfo({ type: 'LOGOUT', user: []}));
+            }
             this.props.history.replace(path);
         });
     }

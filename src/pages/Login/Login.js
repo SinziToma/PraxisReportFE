@@ -3,6 +3,8 @@ import { withRouter } from "react-router-dom";
 
 import LoginForm from '../../components/Forms/Login/LoginForm'
 import { login } from './../../utils/requests'
+import store from './../../redux/store'
+import { updateUserInfo } from './../../redux/actions'
 
 class Login extends React.Component {
   constructor(props) {
@@ -26,6 +28,7 @@ class Login extends React.Component {
   signIn() {
     login(this.state.email, this.state.password)
       .then((res) => {
+        store.dispatch(updateUserInfo({ type: 'LOGIN_SUCCESSFUL', user: res.body}));
         this.props.history.replace('/profile');
       })
       .catch((ex) => {

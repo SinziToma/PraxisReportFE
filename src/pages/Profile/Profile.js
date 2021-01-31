@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from "react-router-dom";
+import { connect } from 'react-redux';
 
 import ProfileComponentSelector from './ProfileComponentSelector'
 import { getProfile, updateProfile } from './../../utils/requests'
@@ -9,9 +9,7 @@ class Profile extends React.Component {
     super(props);
     this.state = {
       profileData: [],
-      user: {
-        email: props.email || 'diftinca@yahoo.com'
-      }
+      userEmail: props.email
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -19,9 +17,9 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    getProfile(this.state.user.email)
+    getProfile(this.props.userEmail)
       .then((res) => {
-        this.setState({ profileData: res.body });
+        this.setState({ profileData: res.body, userEmail: this.props.userEmail });
       }).catch((ex) => {
         // TO DO
       });
@@ -57,4 +55,10 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+const mapStateToProps = (state) => {
+  return {
+    userEmail: state.email
+  }
+}
+
+export default connect(mapStateToProps)(Profile);

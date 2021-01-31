@@ -183,6 +183,18 @@ class ProfessorForm extends React.Component {
                   />
                 </Grid>
 
+
+                <Grid item xs={12}>
+                  <TextField
+                    id="adresa_stagiu_practica"
+                    name="adresa_stagiu_practica"
+                    label="Internship address"
+                    fullWidth
+                    value={this.props.profileData.adresa_stagiu_practica || ''}
+                    onChange={this.props.handleChange}
+                  />
+                </Grid>
+
               </Grid>
               <Button
                 variant="contained"
