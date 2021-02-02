@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import ProfileComponentSelector from './ProfileComponentSelector'
 import { getProfile, updateProfile } from './../../utils/requests'
@@ -8,8 +7,7 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      profileData: [],
-      userEmail: props.email
+      profileData: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,15 +15,17 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    getProfile(this.props.userEmail)
+    // TO DO FOR PRAXIS EDIT
+    getProfile()
       .then((res) => {
-        this.setState({ profileData: res.body, userEmail: this.props.userEmail });
+        this.setState({ profileData: res.body });
       }).catch((ex) => {
         // TO DO
       });
   }
 
   handleChange({ target }) {
+    // TO DO FOR PRAXIS EDIT
     let profileData = this.state.profileData;
     profileData[target.name] = target.value;
 
@@ -35,12 +35,22 @@ class Profile extends React.Component {
   }
 
   onClickSave() {
-    updateProfile(this.state.profileData)
-      .then((res) => {
-        this.setState({ profileData: res.body });
-      }).catch((ex) => {
-        // TO DO
-      });
+    this.props.isPraxisView ? (
+      // TO DO
+      updatePraxis(his.state.data)
+        .then((res) => {
+          this.setState({ praxisData: res.body });
+        }).catch((ex) => {
+          // TO DO
+        })
+    ) : (
+        updateProfile(this.state.profileData)
+          .then((res) => {
+            this.setState({ profileData: res.body });
+          }).catch((ex) => {
+            // TO DO
+          })
+      )
   }
 
   render() {
@@ -50,15 +60,10 @@ class Profile extends React.Component {
         profileData={this.state.profileData}
         handleChange={this.handleChange}
         onClickSave={this.onClickSave}
+        isPraxisView={this.props.isPraxisView || false}
       />
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    userEmail: state.email
-  }
-}
-
-export default connect(mapStateToProps)(Profile);
+export default Profile;

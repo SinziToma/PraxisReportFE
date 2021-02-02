@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-class StudentForm extends React.PureComponent {
+class StudentForm extends React.Component {
   render() {
     const classes = this.props.styles;
     return (
@@ -16,9 +16,8 @@ class StudentForm extends React.PureComponent {
                 Profile
               </Typography>
               <Grid container spacing={3}>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
-                    required
                     id="name"
                     name="name"
                     label="Name"
@@ -27,9 +26,8 @@ class StudentForm extends React.PureComponent {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
-                    required
                     id="phone"
                     name="phone"
                     label="Phone"
@@ -40,6 +38,16 @@ class StudentForm extends React.PureComponent {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
+                    id="email"
+                    name="email"
+                    label="Email"
+                    fullWidth
+                    value={this.props.profileData.email || ''}
+                    onChange={this.props.handleChange}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={3}>
+                  <TextField
                     id="nr_ci"
                     name="nr_ci"
                     label="Nr. CI"
@@ -48,9 +56,8 @@ class StudentForm extends React.PureComponent {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={3}>
                   <TextField
-                    required
                     id="serie_ci"
                     name="serie_ci"
                     label="Serie CI"
@@ -59,9 +66,8 @@ class StudentForm extends React.PureComponent {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={3}>
                   <TextField
-                    required
                     id="cnp"
                     name="cnp"
                     label="CNP"
@@ -70,9 +76,8 @@ class StudentForm extends React.PureComponent {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={3}>
                   <TextField
-                    required
                     id="cetatenie"
                     name="cetatenie"
                     label="Citizenship"
@@ -81,9 +86,8 @@ class StudentForm extends React.PureComponent {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
-                    required
                     id="data_nasterii"
                     name="data_nasterii"
                     label="Date of birth"
@@ -92,9 +96,8 @@ class StudentForm extends React.PureComponent {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
-                    required
                     id="locul_nasterii"
                     name="locul_nasterii"
                     label="Place of birth"
@@ -103,12 +106,11 @@ class StudentForm extends React.PureComponent {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
+                <Grid item xs={12} sm={6} />
 
 
-
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={3}>
                   <TextField
-                    required
                     id="judet"
                     name="judet"
                     label="District"
@@ -117,9 +119,8 @@ class StudentForm extends React.PureComponent {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={3}>
                   <TextField
-                    required
                     id="oras"
                     name="oras"
                     label="City"
@@ -128,9 +129,8 @@ class StudentForm extends React.PureComponent {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={3}>
                   <TextField
-                    required
                     id="strada"
                     name="strada"
                     label="Street"
@@ -139,23 +139,21 @@ class StudentForm extends React.PureComponent {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12} sm={3}>
+                <Grid item xs={12} sm={1}>
                   <TextField
-                    required
                     id="nr_cladire"
                     name="nr_cladire"
-                    label="Building number"
+                    label="Building nr."
                     fullWidth
                     value={this.props.profileData.nr_cladire || ''}
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12} sm={3}>
+                <Grid item xs={12} sm={2}>
                   <TextField
-                    required
                     id="apartament"
                     name="apartament"
-                    label="Apartament number"
+                    label="Apartament nr."
                     fullWidth
                     value={this.props.profileData.apartament || ''}
                     onChange={this.props.handleChange}
@@ -164,9 +162,8 @@ class StudentForm extends React.PureComponent {
 
 
 
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={3}>
                   <TextField
-                    required
                     id="an_studiu"
                     name="an_studiu"
                     label="Year of study"
@@ -175,9 +172,8 @@ class StudentForm extends React.PureComponent {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={3}>
                   <TextField
-                    required
                     id="grupa"
                     name="grupa"
                     label="Group"
@@ -186,9 +182,8 @@ class StudentForm extends React.PureComponent {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={6}>
                   <TextField
-                    required
                     id="specializare"
                     name="specializare"
                     label="Specialization"
@@ -197,6 +192,52 @@ class StudentForm extends React.PureComponent {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
+                {this.props.isPraxisView ? (
+                  <div className={classes.layout, classes.paperPage}>
+                    <Grid container spacing={3}>
+                      <Grid item xs={12}>
+                        <TextField
+                          id="professor_email"
+                          name="professor_email"
+                          label="Professor email"
+                          fullWidth
+                          value={this.props.profileData.professor_form ? this.props.profileData.professor_form.email : ''}
+                          onChange={this.props.handleChange}
+                        />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <TextField
+                          id="mentor_email"
+                          name="mentor_email"
+                          label="Mentor email"
+                          fullWidth
+                          value={this.props.profileData.mentor_form ? this.props.profileData.mentor_form.email : ''}
+                          onChange={this.props.handleChange}
+                        />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <TextField
+                          id="start_date"
+                          name="start_date"
+                          label="Start date"
+                          fullWidth
+                          value={this.props.profileData.start_date || ''}
+                          onChange={this.props.handleChange}
+                        />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <TextField
+                          id="end_date"
+                          name="end_date"
+                          label="End date"
+                          fullWidth
+                          value={this.props.profileData.end_date || ''}
+                          onChange={this.props.handleChange}
+                        />
+                      </Grid>
+                    </Grid>
+                  </div>
+                ) : (<div />)}
               </Grid>
               <Button
                 variant="contained"

@@ -2,6 +2,7 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 
 export const USER_MANAGEMENT_API_URL = 'https://praxisreport-usermanagement.azurewebsites.net/';
 export const PROFILE_API_URL = 'https://praxisreport-profilemanagement.azurewebsites.net/';
+export const PRAXIS_DOCUMENTS_API_URL = 'https://praxisreport-documentmanagement.azurewebsites.net/';
 
 export const useStyles = makeStyles((theme) => ({
     paper: {
@@ -91,8 +92,8 @@ export const useStyles = makeStyles((theme) => ({
         marginRight: theme.spacing(5),
         padding: theme.spacing(2),
         [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-          marginBottom: theme.spacing(6),
-          padding: theme.spacing(3),
+            marginBottom: theme.spacing(6),
+            padding: theme.spacing(3),
         },
     },
 
@@ -101,9 +102,9 @@ export const useStyles = makeStyles((theme) => ({
         marginLeft: theme.spacing(6),
         marginRight: theme.spacing(2),
         [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-          width: 600,
-          marginLeft: 'auto',
-          marginRight: 'auto',
+            width: 600,
+            marginLeft: 'auto',
+            marginRight: 'auto',
         },
     },
 
@@ -113,6 +114,21 @@ export const useStyles = makeStyles((theme) => ({
 
     formControl: {
         marginLeft: theme.spacing(0.3)
-    }
+    },
       
+
+    rootTable: {
+        '& > *': {
+            borderBottom: 'unset',
+        },
+    },
 }));
+
+
+// const useRowStyles = makeStyles({
+//     root: {
+//         '& > *': {
+//             borderBottom: 'unset',
+//         },
+//     },
+// });
