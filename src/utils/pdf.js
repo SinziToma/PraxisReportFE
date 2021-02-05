@@ -16,13 +16,13 @@ export async function writeTextToPdf(pdfBytes, page_number, text, x_coord, y_coo
     const pdfDoc = await PDFDocument.load(pdfBytes);
 
     const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
-    const size = 50;
+    const size = 14;
     const color = rgb(0,0,0);
 
     const pages = pdfDoc.getPages();
     const current_page = pages[page_number];
 
-    current_page.drawText('This text was added with JavaScript!', {
+    current_page.drawText(text, {
         x: x_coord,
         y: y_coord,
         size: size,
@@ -79,21 +79,394 @@ function saveByteArray(fileName, byte) {
     link.click();
 }
 
-export function generateConventie(testText1) {
+/**
+ * Returns the completed pdf file in a Unit8Array
+ * @param student_obj
+ * @param mentor_obj
+ * @param prof_obj
+ * @param practica_obj
+ * @param pdfBytes
+ * @returns {Promise<Uint8Array>}
+ */
+export async function writeConventie(student_obj, mentor_obj, prof_obj,practica_obj, pdfBytes) {
+    const pdfDoc = await PDFDocument.load(pdfBytes);
+
+    const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const size = 8;
+    const color = rgb(0, 0, 0);
+
+
+    getPdfWidthHeight(pdfBytes).then(r => {
+        console.log(r);
+    });
+
+
+
+    const pages = pdfDoc.getPages();
+
+
+    // prima pagina
+    let current_page = pages[0];
+
+    //mentor
+    current_page.drawText(mentor_obj.societate, {
+        x: 60,
+        y: 495,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.oras_sediu, {
+        x: 420,
+        y: 495,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.strada_sediu, {
+        x: 80,
+        y: 480,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.nr_sediu, {
+        x: 200,
+        y: 480,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.telefon_sediu, {
+        x: 280,
+        y: 480,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.fax, {
+        x: 400,
+        y: 480,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.email, {
+        x: 90,
+        y: 460,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.cod_fiscal, {
+        x: 240,
+        y: 460,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.cont, {
+        x: 340,
+        y: 460,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.banca_cont, {
+        x: 70,
+        y: 442,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.reprezentant_legal, {
+        x: 280,
+        y: 442,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.profesie_reprezentant, {
+        x: 60,
+        y: 425,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.adresa_stagiu_practica, {
+        x: 200,
+        y: 405,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+    // student
+    current_page.drawText(student_obj.nume, {
+        x: 200,
+        y: 390,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(student_obj.cetatenie, {
+        x: 450,
+        y: 390,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(student_obj.oras, {
+        x: 140,
+        y: 370,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(student_obj.strada, {
+        x: 340,
+        y: 370,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(student_obj.nr_cladire, {
+        x: 475,
+        y: 370,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(student_obj.apartament, {
+        x: 75,
+        y: 352,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(student_obj.judet, {
+        x: 140,
+        y: 352,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(student_obj.telefon, {
+        x: 240,
+        y: 352,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(student_obj.email, {
+        x: 380,
+        y: 352,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(student_obj.cnp, {
+        x: 80,
+        y: 334,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(student_obj.serie_ci, {
+        x: 410,
+        y: 334,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(student_obj.nr_ci, {
+        x: 460,
+        y: 334,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(student_obj.data_nasterii, {
+        x: 120,
+        y: 315,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(student_obj.locul_nasterii, {
+        x: 245,
+        y: 315,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText("student", {
+        x: 60,
+        y: 295,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(student_obj.an_studiu, {
+        x: 155,
+        y: 280,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(student_obj.grupa, {
+        x: 220,
+        y: 280,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(student_obj.specializarea, {
+        x: 320,
+        y: 280,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+
+    // practica
+    current_page.drawText(practica_obj.durata, {
+        x: 280,
+        y: 112,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(practica_obj.data_inceput, {
+        x: 360,
+        y: 100,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(practica_obj.data_sfarsit, {
+        x: 60,
+        y: 90,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+
+    // pagina 2
+    current_page = pages[1];
+
+    //mentor
+    current_page.drawText(mentor_obj.nume_mentor, {
+        x: 120,
+        y: 144,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.profesie_mentor, {
+        x: 120,
+        y: 133,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.telefon_mentor, {
+        x: 120,
+        y: 122,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.fax_mentor, {
+        x: 260,
+        y: 122,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.email_mentor, {
+        x: 420,
+        y: 122,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+
+
+//prof
+    current_page.drawText(prof_obj.nume, {
+        x: 120,
+        y: 90,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(prof_obj.functie, {
+        x: 120,
+        y: 80,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(prof_obj.telefon, {
+        x: 115,
+        y: 67,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(prof_obj.fax, {
+        x: 190,
+        y: 67,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(prof_obj.email, {
+        x: 270,
+        y: 67,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+    current_page.drawText(prof_obj.nr_credite, {
+        x: 100,
+        y: 35,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+
+
+    return await pdfDoc.save();
+}
+
+
+export function generateConventie(student_obj,mentor_obj,prof_obj,practica_obj) {
     let pdfBytes = getPdfBytes(process.env.PUBLIC_URL + 'ConventiePractica2020.pdf');
 
-    writeTextToPdf(
+    writeConventie(
+        student_obj,
+        mentor_obj,
+        prof_obj,
+        practica_obj,
         pdfBytes,
-        0,
-        testText1,
-        150,
-        150
     ).then(r => {
-        console.log("written the text");
-        console.log(typeof r)
-        console.log("downloading...");
-
         saveByteArray("ConventiePractica.pdf",r)
     })
+
+}
+
+
+export function generateRaport() {
+
+}
+
+export function generateAcord() {
 
 }
