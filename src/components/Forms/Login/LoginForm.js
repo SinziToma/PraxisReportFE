@@ -9,6 +9,7 @@ import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Container from '@material-ui/core/Container';
+import Typography from "@material-ui/core/Typography";
 
 class LoginForm extends React.Component {
   render() {
@@ -20,9 +21,9 @@ class LoginForm extends React.Component {
           <Avatar className={styles.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-          <Button component="h1">
+          <Typography component="h1" variant="h5">
             Autentificare
-          </Button>
+          </Typography>
           <form className={styles.form} noValidate>
             <TextField
               variant="outlined"
