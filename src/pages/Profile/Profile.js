@@ -1,13 +1,14 @@
 import React from 'react';
 
 import ProfileComponentSelector from './ProfileComponentSelector'
-import { getProfile, updateProfile } from './../../utils/requests'
+import { getProfile, updateProfile, getEditablePraxisForm } from './../../utils/requests'
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      profileData: []
+      profileData: [],
+      praxisId: null
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -16,16 +17,27 @@ class Profile extends React.Component {
 
   componentDidMount() {
     // TO DO FOR PRAXIS EDIT
-    getProfile()
-      .then((res) => {
-        this.setState({ profileData: res.body });
-      }).catch((ex) => {
-        // TO DO
-      });
+    this.props.isPraxisView ? (
+      this.setState({profileData: this.props.praxisData, praxisId: this.props.praxisId})
+      // getEditablePraxisForm(profileData.id)
+      //   .then((res) => {
+      //     this.setState({ profileData: res.body });
+      //   }).catch((ex) => {
+      //     // TO DO
+      //   })
+    ) : (
+        getProfile()
+          .then((res) => {
+            this.setState({ profileData: res.body });
+          }).catch((ex) => {
+            // TO DO
+          })
+      )
   }
 
   handleChange({ target }) {
-    // TO DO FOR PRAXIS EDIT
+    // TO DO FOR PRAXIS EDIT 
+    // NOT ANYMORE
     let profileData = this.state.profileData;
     profileData[target.name] = target.value;
 

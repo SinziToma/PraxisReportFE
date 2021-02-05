@@ -182,13 +182,23 @@ class StudentForm extends React.Component {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={3}>
                   <TextField
                     id="specializare"
                     name="specializare"
                     label="Specialization"
                     fullWidth
                     value={this.props.profileData.specializare || ''}
+                    onChange={this.props.handleChange}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={3}>
+                  <TextField
+                    id="facultate"
+                    name="facultate"
+                    label="Facultate"
+                    fullWidth
+                    value={this.props.profileData.facultate || ''}
                     onChange={this.props.handleChange}
                   />
                 </Grid>

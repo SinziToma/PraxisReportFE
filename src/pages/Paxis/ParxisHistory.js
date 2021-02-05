@@ -40,7 +40,7 @@ class PraxisHistory extends React.Component {
 
     handleAcceptClick = (praxisData) => {
         // TO DO status finished or smth
-        praxisData.status = "finished"
+        praxisData.status = "completed"
         updatePraxis(praxisData)
             .then((res) => {
                 this.setState({ praxisData: res.body });
@@ -54,10 +54,22 @@ class PraxisHistory extends React.Component {
     }
 
     handleEditClick = (praxisData) => {
-        this.props.history.push({
-            pathname: 'praxis-history/edit-praxis',
-            state: { praxisData: praxisData }
+        getEditablePraxisForm(profileData.id)
+        .then((res) => {
+            this.props.history.push({
+                pathname: 'praxis-history/edit-praxis',
+                state: { praxisData: res.body, praxisId: profileData.id }
+            })
+
+          //this.setState({ profileData: res.body });
+        }).catch((ex) => {
+          // TO DO
         })
+
+        // this.props.history.push({
+        //     pathname: 'praxis-history/edit-praxis',
+        //     state: { praxisData: praxisData }
+        // })
     }
 
     handleDownloadClick = (praxisData) => {

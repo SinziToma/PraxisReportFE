@@ -24,6 +24,7 @@ class Page extends React.Component {
     onSelectMenuItem = (path) => {
         this.setState({ open: !this.state.open }, () => {
             if(path == '/logout') {
+                localStorage.clear();
                 store.dispatch(updateUserInfo({ type: 'LOGOUT', user: []}));
             }
             this.props.history.replace(path);

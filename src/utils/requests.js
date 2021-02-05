@@ -1,9 +1,6 @@
 import request from 'superagent'
 import * as Constants from './constants'
 
-// TO DO add TOKEN to requests
-let email = 'tboth@yahoo.com'
-
 export function login(email, password) {
     let body = {
         email: email,
@@ -30,11 +27,12 @@ export function register(name, email, password, type) {
 
 export function getProfile() {
     return request.post(`${Constants.PROFILE_API_URL}profile/get-by-email`)
-        .send({ email: email });
+        .set('Authorization', localStorage.getItem('authToken'));
 }
 
 export function updateProfile(profileData) {
     return request.put(`${Constants.PROFILE_API_URL}profile/update`)
+        .set('Authorization', localStorage.getItem('authToken'))
         .send(profileData);
 }
 
@@ -46,21 +44,30 @@ export function updateProfile(profileData) {
 // }
 
 export function getAllPraxis() {
-    return request.post(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/get-by-email`)
-        .send({ email: email });
+    return request.get(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/get-by-email`)
+        .set('Authorization', localStorage.getItem('authToken'));
 }
 
 export function createPraxis() {
     return request.post(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/create`)
-        .send({ email: email });
+        .set('Authorization', localStorage.getItem('authToken'));
 }
 
 export function updatePraxis(praxisData) {
     return request.put(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/update`)
+        .set('Authorization', localStorage.getItem('authToken'))
         .send(praxisData);
 }
 
 export function deletePraxis(profileData) {
     return request.put(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/delete`)
+        .set('Authorization', localStorage.getItem('authToken'))
         .send(profileData);
 }
+
+export function getEditablePraxisForm(praxisId) {
+    return request.put(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/get-form-by-email`)
+        .set('Authorization', localStorage.getItem('authToken'))
+        .send(praxisData);
+}
+

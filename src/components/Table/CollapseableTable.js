@@ -10,6 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import EditIcon from '@material-ui/icons/Edit';
+import SaveAltIcon from '@material-ui/icons/SaveAlt';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
@@ -62,7 +63,7 @@ class Row extends React.PureComponent {
                     <TableCell onClick={() => this.props.handleAcceptClick(row)}><CheckIcon/></TableCell>
                     <TableCell onClick={() => this.props.handleDeclineClick(row)}><ClearIcon/></TableCell>
                     <TableCell onClick={() => this.props.handleEditClick(row)}><EditIcon/></TableCell>
-                    <TableCell onClick={() => this.props.handleDownloadClick(row)}><ArrowDownwardIcon/></TableCell>
+                    <TableCell onClick={() => this.props.handleDownloadClick(row)}><SaveAltIcon/></TableCell>
 
                 </TableRow>
                 <TableRow>
