@@ -1,8 +1,9 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
 
-import Page from '../../components/Page/Page'
-import PraxisTable from '../../components/Table/Table'
+import Page from '../../components/Page/Page';
+import PraxisTable from '../../components/Table/Table';
+import DialogForm from './../../components/Dialog/FormDialog';
 import { getAllPraxis, getEditablePraxisForm, updatePraxis, updatePraxisStatus } from '../../utils/requests';
 import {generateAcord, generateConventie, generateRaport} from '../../utils/pdf';
 
@@ -11,7 +12,9 @@ class PraxisHistory extends React.Component {
         super(props);
 
         this.state = {
-            praxisData: []
+            praxisData: [],
+            dialogFormOpen: false,
+            selectedPraxisId: null
         }
 
         this.updatePraxisReport = this.updatePraxisReport.bind(this);
@@ -21,6 +24,8 @@ class PraxisHistory extends React.Component {
         this.handleRaportClick=this.handleRaportClick.bind(this);
         this.handleAcordClick=this.handleAcordClick.bind(this);
         this.handleConventieClick=this.handleConventieClick.bind(this);
+
+        this.handleDeclineSave=this.handleDeclineSave(this);
     }
 
     componentDidMount() {
@@ -50,7 +55,15 @@ class PraxisHistory extends React.Component {
     }
 
     handleDeclineClick = (praxisData) => {
-        // TO DO pop up maybe where she can write message/cancel and then save status declined or smth
+        this.setState({ selectedPraxisId: praxisData, dialogFormOpen: true});
+    }
+
+    handleDeclineSave = () => {
+
+    }
+
+    handleFormDialogClose = () => {
+        this.setState({ selectedPraxisId: null, dialogFormOpen: false});
     }
 
     handleEditClick = (praxisData) => {
@@ -255,6 +268,10 @@ class PraxisHistory extends React.Component {
                     handleAcordClick={this.handleAcordClick}
                     handleConventieClick={this.handleConventieClick}
                 />
+                <DialogForm {...this.props}
+                open={this.state.dialogFormOpen}
+                handleDeclineSave={this.handleDeclineSave}
+                handleClose={this.handleFormDialogClose}/>
             </div>
         )
     }

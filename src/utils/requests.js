@@ -26,7 +26,7 @@ export function register(name, email, password, type) {
 
 
 export function getProfile() {
-    return request.post(`${Constants.PROFILE_API_URL}profile/get-by-email`)
+    return request.get(`${Constants.PROFILE_API_URL}profile/get-by-email`)
         .set('Authorization', localStorage.getItem('authToken'));
 }
 
@@ -49,9 +49,11 @@ export function createPraxis() {
 }
 
 export function updatePraxis(praxisId, profileData) {
+    let profileType = profileData.type.replace('profile', '_form');
+    
     let praxisData = {
         id: praxisId,
-        [profileData.type]: profileData
+        [profileType]: profileData
     }
 
     return request.put(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/update`)
