@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from "react-router-dom";
 
 import ProfileComponentSelector from './ProfileComponentSelector'
-import { getProfile, updateProfile, getEditablePraxisForm, createPraxis, updatePraxis } from './../../utils/requests'
+import { getProfile, updateProfile, getEditablePraxisForm, createPraxis, updatePraxis, sendEmail } from './../../utils/requests'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -69,7 +69,8 @@ class Profile extends React.Component {
             "start_date": this.state.start_date,
             "end_date": this.state.end_date
           })
-            .then(() => {
+          .then((res) => sendEmail(this.state.professor_email, this.state.mentor_email, res.body.id, true))  
+          .then(() => {
               this.props.history.replace('/praxis-history')
             }).catch((ex) => {
               // TO DO
@@ -77,12 +78,6 @@ class Profile extends React.Component {
         })
       }
       else {
-        // let profileType = profileData.type?.replace('profile', '_form');
-
-        // let praxisData = {
-        //     id: praxisId,
-        //     [profileType]: profileData
-        // }
         updatePraxis({
           "id": this.state.praxisId,
           [this.state.profileData.type.replace('profile', '_form')]: this.state.profileData
