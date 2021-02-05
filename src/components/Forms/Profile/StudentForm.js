@@ -211,7 +211,7 @@ class StudentForm extends React.Component {
                           name="professor_email"
                           label="Professor email"
                           fullWidth
-                          value={this.props.profileData.professor_form ? this.props.profileData.professor_form.email : ''}
+                          value={this.props.professor_email ? this.props.professor_email : ''}
                           onChange={this.props.handleChange}
                         />
                       </Grid>
@@ -221,7 +221,7 @@ class StudentForm extends React.Component {
                           name="mentor_email"
                           label="Mentor email"
                           fullWidth
-                          value={this.props.profileData.mentor_form ? this.props.profileData.mentor_form.email : ''}
+                          value={this.props.mentor_email ? this.props.mentor_email : ''}
                           onChange={this.props.handleChange}
                         />
                       </Grid>
@@ -231,7 +231,7 @@ class StudentForm extends React.Component {
                           name="start_date"
                           label="Start date"
                           fullWidth
-                          value={this.props.profileData.start_date || ''}
+                          value={this.props.start_date || ''}
                           onChange={this.props.handleChange}
                         />
                       </Grid>
@@ -241,7 +241,7 @@ class StudentForm extends React.Component {
                           name="end_date"
                           label="End date"
                           fullWidth
-                          value={this.props.profileData.end_date || ''}
+                          value={this.props.end_date || ''}
                           onChange={this.props.handleChange}
                         />
                       </Grid>

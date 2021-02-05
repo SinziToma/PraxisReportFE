@@ -12,7 +12,7 @@ class FormDialog extends React.PureComponent {
         return (
             <div>
                 <Dialog open={this.props.open} onClose={this.props.handleClose} aria-labelledby="form-dialog-title">
-                    <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                    <DialogTitle id="form-dialog-title">Decline praxis</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
                             Leave a message.

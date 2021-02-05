@@ -17,7 +17,6 @@ class PraxisHistory extends React.Component {
             selectedPraxisId: null
         }
 
-        this.updatePraxisReport = this.updatePraxisReport.bind(this);
         this.handleAcceptClick = this.handleAcceptClick.bind(this);
         this.handleDeclineClick = this.handleDeclineClick.bind(this);
         this.handleEditClick = this.handleEditClick.bind(this);
@@ -35,15 +34,6 @@ class PraxisHistory extends React.Component {
             }).catch((ex) => {
                 //TO DO
             })
-    }
-
-    updatePraxisReport = (praxisData) => {
-        updatePraxis(praxisData)
-            .then((res) => {
-                this.setState({ praxisData: res.body });
-            }).catch((ex) => {
-
-            });
     }
 
     handleAcceptClick = (praxisData) => {
@@ -64,6 +54,10 @@ class PraxisHistory extends React.Component {
 
     handleFormDialogClose = () => {
         this.setState({ selectedPraxisId: null, dialogFormOpen: false});
+    }
+
+    handleDialogChange = () => {
+
     }
 
     handleEditClick = (praxisData) => {

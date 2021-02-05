@@ -48,14 +48,7 @@ export function createPraxis() {
         .set('Authorization', localStorage.getItem('authToken'));
 }
 
-export function updatePraxis(praxisId, profileData) {
-    let profileType = profileData.type.replace('profile', '_form');
-    
-    let praxisData = {
-        id: praxisId,
-        [profileType]: profileData
-    }
-
+export function updatePraxis(praxisData) {
     return request.put(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/update`)
         .set('Authorization', localStorage.getItem('authToken'))
         .send(praxisData);
