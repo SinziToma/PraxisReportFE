@@ -27,6 +27,7 @@ class Register extends React.PureComponent {
         return 'professorprofile'
       case 3:
         return 'studentprofile'
+
     }
   }
 
@@ -43,6 +44,9 @@ class Register extends React.PureComponent {
   }
 
   register() {
+
+    console.log(this.state);
+
     register(this.state.name, this.state.email, this.state.password, this.state.type)
       .then((res) => {
         this.props.history.replace('/login');

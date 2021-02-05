@@ -29,6 +29,8 @@ class PraxisHistory extends React.Component {
                 this.setState({ praxisData: res.body });
             }).catch((ex) => {
                 //TO DO
+                console.log("Waiting because: ");
+                console.log(ex);
             })
     }
 
@@ -65,120 +67,129 @@ class PraxisHistory extends React.Component {
         })
     }
 
+    checkValue(inputValue){
+        if(inputValue===null){
+            return "";
+        } else{
+            return inputValue.toString();
+        }
+    }
+
+
+
     handleConventieClick= (praxisData) =>{
         generateConventie(
             {
-                nume: "Test Name",
-                cetatenie: "Grec",
-                oras: "Timbuktu",
-                strada: "Garii",
-                nr_cladire: "15",
-                apartament: "15",
-                judet: "Polonia",
-                telefon: "123123123",
-                email: "test@test.com",
-                cnp: "342124132421342134",
-                serie_ci: "44",
-                nr_ci: "231432",
-                data_nasterii:"15.15.15",
-                locul_nasterii: "Asgard",
-                an_studiu: "20",
-                grupa: "13",
-                specializarea: "Frecat Menta",
-                linie_studiu:"talibans"
+                nume: this.checkValue(praxisData['student_form']['name']),
+                cetatenie: this.checkValue(praxisData['student_form']['cetatenie']),
+                oras: this.checkValue(praxisData['student_form']['oras']),
+                strada: this.checkValue(praxisData['student_form']['strada']),
+                nr_cladire: this.checkValue(praxisData['student_form']['nr_cladire']),
+                apartament: this.checkValue(praxisData['student_form']['apartament']),
+                judet: this.checkValue(praxisData['student_form']['judet']),
+                telefon: this.checkValue(praxisData['student_form']['phone']),
+                email: this.checkValue(praxisData['student_form']['email']),
+                cnp: this.checkValue(praxisData['student_form']['cnp']),
+                serie_ci: this.checkValue(praxisData['student_form']['serie_ci']),
+                nr_ci: this.checkValue(praxisData['student_form']['nr_ci']),
+                data_nasterii:this.checkValue(praxisData['student_form']['data_nasterii']),
+                locul_nasterii: this.checkValue(praxisData['student_form']['locul_nasterii']),
+                an_studiu: this.checkValue(praxisData['student_form']['an_studiu']),
+                grupa: this.checkValue(praxisData['student_form']['grupa']),
+                specializarea: this.checkValue(praxisData['student_form']['specializare']),
+                linie_studiu:this.checkValue(praxisData['student_form']['facultate'])
 
             },
             {
-                societate:"Amorteala SRL",
-                oras_sediu: "Dambovita",
-                strada_sediu: "Avioane",
-                nr_sediu:"4143",
-                telefon_sediu:"2341241234412",
-                fax: "21423412",
-                email: "dsfa@asdf",
-                cod_fiscal: "31421",
-                cont: "RO#$%!@$!@%$@%",
-                banca_cont: "Schwanbb",
-                nume_mentor: "Ghita",
-                profesie_mentor:"Strungar",
-                telefon_mentor:"123",
-                fax_mentor:"123fsdfa",
-                email_mentor: "afasdf@asdfa",
-                reprezentant_legal: "Ionut",
-                profesie_reprezentant: "Fochist",
-                adresa_stagiu_practica: "str. Cirese, Fundeni"
+                societate: this.checkValue(praxisData['mentor_form']['societate']),
+                oras_sediu:  this.checkValue(praxisData['mentor_form']['oras_sediu']),
+                strada_sediu:  this.checkValue(praxisData['mentor_form']['strada_sediu']),
+                nr_sediu: this.checkValue(praxisData['mentor_form']['nr_sediu']),
+                telefon_sediu: this.checkValue(praxisData['mentor_form']['telefon_sediu']),
+                fax:  this.checkValue(praxisData['mentor_form']['fax_sediu']),
+                email:  this.checkValue(praxisData['mentor_form']['email_sediu']),
+                cod_fiscal:  this.checkValue(praxisData['mentor_form']['cod_fiscal']),
+                cont:  this.checkValue(praxisData['mentor_form']['cont']),
+                banca_cont:  this.checkValue(praxisData['mentor_form']['banca_cont']),
+                nume_mentor:  this.checkValue(praxisData['mentor_form']['name']),
+                profesie_mentor: this.checkValue(praxisData['mentor_form']['profesie_mentor']),
+                telefon_mentor: this.checkValue(praxisData['mentor_form']['phone']),
+                fax_mentor: this.checkValue(praxisData['mentor_form']['fax_sediu']),
+                email_mentor:  this.checkValue(praxisData['mentor_form']['email']),
+                reprezentant_legal:  this.checkValue(praxisData['mentor_form']['reprezentant_legal']),
+                profesie_reprezentant:  this.checkValue(praxisData['mentor_form']['profesie_mentor']),
+                adresa_stagiu_practica:  this.checkValue(praxisData['mentor_form']['adresa_stagiu_practica'])
             },
             {
-                nume: "profesorius",
-                functie: "paznic la usa",
-                telefon: "1232341234",
-                fax: "4321412",
-                email: "asdfa@asdfa",
-                nr_credite: "14"
+                nume:  this.checkValue(praxisData['professor_form']['name']),
+                functie:  this.checkValue(praxisData['professor_form']['functie']),
+                telefon:  this.checkValue(praxisData['professor_form']['phone']),
+                fax:  this.checkValue(praxisData['professor_form']['fax']),
+                email:  this.checkValue(praxisData['professor_form']['email']),
+                nr_credite:  this.checkValue(praxisData['nr_credite'])
             },
             {
-                durata: "15 ore",
-                data_inceput: "12.12.12",
-                data_sfarsit: "12.12.13",
+                durata:this.checkValue( praxisData['nr_credite']),
+                data_inceput:this.checkValue( praxisData['nr_credite']),
+                data_sfarsit: this.checkValue(praxisData['nr_credite']),
             });
     }
 
 
     handleAcordClick = (praxisData) => {
-        generateAcord(
-            {
-            nume: "Test Name",
-            cetatenie: "Grec",
-            oras: "Timbuktu",
-            strada: "Garii",
-            nr_cladire: "15",
-            apartament: "15",
-            judet: "Polonia",
-            telefon: "123123123",
-            email: "test@test.com",
-            cnp: "342124132421342134",
-            serie_ci: "44",
-            nr_ci: "231432",
-            data_nasterii:"15.15.15",
-            locul_nasterii: "Asgard",
-            an_studiu: "20",
-            grupa: "13",
-            specializarea: "Frecat Menta",
-            linie_studiu:"talibans"
+        generateAcord({
+                nume: this.checkValue(praxisData['student_form']['name']),
+                cetatenie: this.checkValue(praxisData['student_form']['cetatenie']),
+                oras: this.checkValue(praxisData['student_form']['oras']),
+                strada: this.checkValue(praxisData['student_form']['strada']),
+                nr_cladire: this.checkValue(praxisData['student_form']['nr_cladire']),
+                apartament: this.checkValue(praxisData['student_form']['apartament']),
+                judet: this.checkValue(praxisData['student_form']['judet']),
+                telefon: this.checkValue(praxisData['student_form']['phone']),
+                email: this.checkValue(praxisData['student_form']['email']),
+                cnp: this.checkValue(praxisData['student_form']['cnp']),
+                serie_ci: this.checkValue(praxisData['student_form']['serie_ci']),
+                nr_ci: this.checkValue(praxisData['student_form']['nr_ci']),
+                data_nasterii:this.checkValue(praxisData['student_form']['data_nasterii']),
+                locul_nasterii: this.checkValue(praxisData['student_form']['locul_nasterii']),
+                an_studiu: this.checkValue(praxisData['student_form']['an_studiu']),
+                grupa: this.checkValue(praxisData['student_form']['grupa']),
+                specializarea: this.checkValue(praxisData['student_form']['specializare']),
+                linie_studiu:this.checkValue(praxisData['student_form']['facultate'])
 
-        },
+            },
             {
-            societate:"Amorteala SRL",
-            oras_sediu: "Dambovita",
-            strada_sediu: "Avioane",
-            nr_sediu:"4143",
-            telefon_sediu:"2341241234412",
-            fax: "21423412",
-            email: "dsfa@asdf",
-            cod_fiscal: "31421",
-            cont: "RO#$%!@$!@%$@%",
-            banca_cont: "Schwanbb",
-            nume_mentor: "Ghita",
-            profesie_mentor:"Strungar",
-            telefon_mentor:"123",
-            fax_mentor:"123fsdfa",
-            email_mentor: "afasdf@asdfa",
-            reprezentant_legal: "Ionut",
-            profesie_reprezentant: "Fochist",
-            adresa_stagiu_practica: "str. Cirese, Fundeni"
-        },
+                societate: this.checkValue(praxisData['mentor_form']['societate']),
+                oras_sediu:  this.checkValue(praxisData['mentor_form']['oras_sediu']),
+                strada_sediu:  this.checkValue(praxisData['mentor_form']['strada_sediu']),
+                nr_sediu: this.checkValue(praxisData['mentor_form']['nr_sediu']),
+                telefon_sediu: this.checkValue(praxisData['mentor_form']['telefon_sediu']),
+                fax:  this.checkValue(praxisData['mentor_form']['fax_sediu']),
+                email:  this.checkValue(praxisData['mentor_form']['email_sediu']),
+                cod_fiscal:  this.checkValue(praxisData['mentor_form']['cod_fiscal']),
+                cont:  this.checkValue(praxisData['mentor_form']['cont']),
+                banca_cont:  this.checkValue(praxisData['mentor_form']['banca_cont']),
+                nume_mentor:  this.checkValue(praxisData['mentor_form']['name']),
+                profesie_mentor: this.checkValue(praxisData['mentor_form']['profesie_mentor']),
+                telefon_mentor: this.checkValue(praxisData['mentor_form']['phone']),
+                fax_mentor: this.checkValue(praxisData['mentor_form']['fax_sediu']),
+                email_mentor:  this.checkValue(praxisData['mentor_form']['email']),
+                reprezentant_legal:  this.checkValue(praxisData['mentor_form']['reprezentant_legal']),
+                profesie_reprezentant:  this.checkValue(praxisData['mentor_form']['profesie_mentor']),
+                adresa_stagiu_practica:  this.checkValue(praxisData['mentor_form']['adresa_stagiu_practica'])
+            },
             {
-            nume: "profesorius",
-            functie: "paznic la usa",
-            telefon: "1232341234",
-            fax: "4321412",
-            email: "asdfa@asdfa",
-            nr_credite: "14"
-        },
+                nume:  this.checkValue(praxisData['professor_form']['name']),
+                functie:  this.checkValue(praxisData['professor_form']['functie']),
+                telefon:  this.checkValue(praxisData['professor_form']['phone']),
+                fax:  this.checkValue(praxisData['professor_form']['fax']),
+                email:  this.checkValue(praxisData['professor_form']['email']),
+                nr_credite:  this.checkValue(praxisData['nr_credite'])
+            },
             {
-                durata: "15 ore",
-                data_inceput: "12.12.12",
-                data_sfarsit: "12.12.13",
+                durata:this.checkValue( praxisData['nr_credite']),
+                data_inceput:this.checkValue( praxisData['nr_credite']),
+                data_sfarsit: this.checkValue(praxisData['nr_credite']),
             });
     }
 
@@ -186,58 +197,58 @@ class PraxisHistory extends React.Component {
     handleRaportClick= (praxisData) =>{
         generateRaport(
             {
-                nume: "Test Name",
-                cetatenie: "Grec",
-                oras: "Timbuktu",
-                strada: "Garii",
-                nr_cladire: "15",
-                apartament: "15",
-                judet: "Polonia",
-                telefon: "123123123",
-                email: "test@test.com",
-                cnp: "342124132421342134",
-                serie_ci: "44",
-                nr_ci: "231432",
-                data_nasterii:"15.15.15",
-                locul_nasterii: "Asgard",
-                an_studiu: "20",
-                grupa: "13",
-                specializarea: "Frecat Menta",
-                linie_studiu:"talibans"
+                nume: this.checkValue(praxisData['student_form']['name']),
+                cetatenie: this.checkValue(praxisData['student_form']['cetatenie']),
+                oras: this.checkValue(praxisData['student_form']['oras']),
+                strada: this.checkValue(praxisData['student_form']['strada']),
+                nr_cladire: this.checkValue(praxisData['student_form']['nr_cladire']),
+                apartament: this.checkValue(praxisData['student_form']['apartament']),
+                judet: this.checkValue(praxisData['student_form']['judet']),
+                telefon: this.checkValue(praxisData['student_form']['phone']),
+                email: this.checkValue(praxisData['student_form']['email']),
+                cnp: this.checkValue(praxisData['student_form']['cnp']),
+                serie_ci: this.checkValue(praxisData['student_form']['serie_ci']),
+                nr_ci: this.checkValue(praxisData['student_form']['nr_ci']),
+                data_nasterii:this.checkValue(praxisData['student_form']['data_nasterii']),
+                locul_nasterii: this.checkValue(praxisData['student_form']['locul_nasterii']),
+                an_studiu: this.checkValue(praxisData['student_form']['an_studiu']),
+                grupa: this.checkValue(praxisData['student_form']['grupa']),
+                specializarea: this.checkValue(praxisData['student_form']['specializare']),
+                linie_studiu:this.checkValue(praxisData['student_form']['facultate'])
 
             },
             {
-                societate:"Amorteala SRL",
-                oras_sediu: "Dambovita",
-                strada_sediu: "Avioane",
-                nr_sediu:"4143",
-                telefon_sediu:"2341241234412",
-                fax: "21423412",
-                email: "dsfa@asdf",
-                cod_fiscal: "31421",
-                cont: "RO#$%!@$!@%$@%",
-                banca_cont: "Schwanbb",
-                nume_mentor: "Ghita",
-                profesie_mentor:"Strungar",
-                telefon_mentor:"123",
-                fax_mentor:"123fsdfa",
-                email_mentor: "afasdf@asdfa",
-                reprezentant_legal: "Ionut",
-                profesie_reprezentant: "Fochist",
-                adresa_stagiu_practica: "str. Cirese, Fundeni"
+                societate: this.checkValue(praxisData['mentor_form']['societate']),
+                oras_sediu:  this.checkValue(praxisData['mentor_form']['oras_sediu']),
+                strada_sediu:  this.checkValue(praxisData['mentor_form']['strada_sediu']),
+                nr_sediu: this.checkValue(praxisData['mentor_form']['nr_sediu']),
+                telefon_sediu: this.checkValue(praxisData['mentor_form']['telefon_sediu']),
+                fax:  this.checkValue(praxisData['mentor_form']['fax_sediu']),
+                email:  this.checkValue(praxisData['mentor_form']['email_sediu']),
+                cod_fiscal:  this.checkValue(praxisData['mentor_form']['cod_fiscal']),
+                cont:  this.checkValue(praxisData['mentor_form']['cont']),
+                banca_cont:  this.checkValue(praxisData['mentor_form']['banca_cont']),
+                nume_mentor:  this.checkValue(praxisData['mentor_form']['name']),
+                profesie_mentor: this.checkValue(praxisData['mentor_form']['profesie_mentor']),
+                telefon_mentor: this.checkValue(praxisData['mentor_form']['phone']),
+                fax_mentor: this.checkValue(praxisData['mentor_form']['fax_sediu']),
+                email_mentor:  this.checkValue(praxisData['mentor_form']['email']),
+                reprezentant_legal:  this.checkValue(praxisData['mentor_form']['reprezentant_legal']),
+                profesie_reprezentant:  this.checkValue(praxisData['mentor_form']['profesie_mentor']),
+                adresa_stagiu_practica:  this.checkValue(praxisData['mentor_form']['adresa_stagiu_practica'])
             },
             {
-                nume: "profesorius",
-                functie: "paznic la usa",
-                telefon: "1232341234",
-                fax: "4321412",
-                email: "asdfa@asdfa",
-                nr_credite: "14"
+                nume:  this.checkValue(praxisData['professor_form']['name']),
+                functie:  this.checkValue(praxisData['professor_form']['functie']),
+                telefon:  this.checkValue(praxisData['professor_form']['phone']),
+                fax:  this.checkValue(praxisData['professor_form']['fax']),
+                email:  this.checkValue(praxisData['professor_form']['email']),
+                nr_credite:  this.checkValue(praxisData['nr_credite'])
             },
             {
-                durata: "15 ore",
-                data_inceput: "12.12.12",
-                data_sfarsit: "12.12.13",
+                durata:this.checkValue( praxisData['nr_credite']),
+                data_inceput:this.checkValue( praxisData['nr_credite']),
+                data_sfarsit: this.checkValue(praxisData['nr_credite']),
             });
     }
 

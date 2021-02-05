@@ -31,6 +31,7 @@ class StudentForm extends React.Component {
                     id="phone"
                     name="phone"
                     label="Phone"
+                    type="tel"
                     fullWidth
                     value={this.props.profileData.phone || ''}
                     onChange={this.props.handleChange}
@@ -41,6 +42,7 @@ class StudentForm extends React.Component {
                     id="email"
                     name="email"
                     label="Email"
+                    type="email"
                     fullWidth
                     value={this.props.profileData.email || ''}
                     onChange={this.props.handleChange}
@@ -91,8 +93,9 @@ class StudentForm extends React.Component {
                     id="data_nasterii"
                     name="data_nasterii"
                     label="Date of birth"
+                    type="date"
                     fullWidth
-                    value={this.props.profileData.data_nasterii || ''}
+                    value={this.props.profileData.data_nasterii || "2000-02-02"}
                     onChange={this.props.handleChange}
                   />
                 </Grid>
@@ -210,6 +213,7 @@ class StudentForm extends React.Component {
                           id="professor_email"
                           name="professor_email"
                           label="Professor email"
+                          type="email"
                           fullWidth
                           value={this.props.profileData.professor_form ? this.props.profileData.professor_form.email : ''}
                           onChange={this.props.handleChange}
@@ -220,6 +224,7 @@ class StudentForm extends React.Component {
                           id="mentor_email"
                           name="mentor_email"
                           label="Mentor email"
+                          type="email"
                           fullWidth
                           value={this.props.profileData.mentor_form ? this.props.profileData.mentor_form.email : ''}
                           onChange={this.props.handleChange}
@@ -230,9 +235,14 @@ class StudentForm extends React.Component {
                           id="start_date"
                           name="start_date"
                           label="Start date"
+
+                          type="date"
                           fullWidth
-                          value={this.props.profileData.start_date || ''}
+                          value={this.props.profileData.start_date || "2021-02-07"}
                           onChange={this.props.handleChange}
+                          InputLabelProps={{
+                            shrink: true,
+                          }}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -240,8 +250,13 @@ class StudentForm extends React.Component {
                           id="end_date"
                           name="end_date"
                           label="End date"
+                          type="date"
                           fullWidth
-                          value={this.props.profileData.end_date || ''}
+
+                          InputLabelProps={{
+                            shrink: true,
+                          }}
+                          value={this.props.profileData.end_date ||"2021-02-14"}
                           onChange={this.props.handleChange}
                         />
                       </Grid>

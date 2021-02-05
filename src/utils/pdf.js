@@ -446,6 +446,131 @@ export async function writeConventie(student_obj, mentor_obj, prof_obj,practica_
     return await pdfDoc.save();
 }
 
+export async function writeAcord(student_obj, mentor_obj, prof_obj,practica_obj, pdfBytes) {
+    const pdfDoc = await PDFDocument.load(pdfBytes);
+
+    const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const size = 8;
+    const color = rgb(0, 0, 0);
+
+
+    getPdfWidthHeight(pdfBytes).then(r => {
+        console.log(r);
+    });
+
+
+
+    const pages = pdfDoc.getPages();
+
+
+    // prima pagina
+    let current_page = pages[0];
+
+
+
+    //mentor
+    current_page.drawText(mentor_obj.societate, {
+        x: 60,
+        y: 495,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.oras_sediu, {
+        x: 420,
+        y: 495,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.strada_sediu, {
+        x: 80,
+        y: 480,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.nr_sediu, {
+        x: 200,
+        y: 480,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.telefon_sediu, {
+        x: 280,
+        y: 480,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.fax, {
+        x: 400,
+        y: 480,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    /*current_page.drawText(mentor_obj.email, {
+        x: 90,
+        y: 460,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });*/
+    current_page.drawText(mentor_obj.cod_fiscal, {
+        x: 240,
+        y: 460,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.cont, {
+        x: 340,
+        y: 460,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.banca_cont, {
+        x: 70,
+        y: 442,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.reprezentant_legal, {
+        x: 280,
+        y: 442,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+
+    return await pdfDoc.save();
+}
+
+export async function writeRaport(student_obj, mentor_obj, prof_obj,practica_obj, pdfBytes) {
+    const pdfDoc = await PDFDocument.load(pdfBytes);
+
+    const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const size = 8;
+    const color = rgb(0, 0, 0);
+
+
+    getPdfWidthHeight(pdfBytes).then(r => {
+        console.log(r);
+    });
+    const pages = pdfDoc.getPages();
+    // prima pagina
+    let current_page = pages[0];
+
+
+
+
+    return await pdfDoc.save();
+}
 
 export function generateConventie(student_obj,mentor_obj,prof_obj,practica_obj) {
     let pdfBytes = getPdfBytes(process.env.PUBLIC_URL + 'ConventiePractica2020.pdf');
@@ -463,10 +588,29 @@ export function generateConventie(student_obj,mentor_obj,prof_obj,practica_obj) 
 }
 
 
-export function generateRaport() {
+export function generateRaport(student_obj,mentor_obj,prof_obj,practica_obj) {
+    let pdfBytes = getPdfBytes(process.env.PUBLIC_URL + 'RaportActivitatePractica2019.pdf');
 
+    writeRaport(
+        student_obj,
+        mentor_obj,
+        prof_obj,
+        practica_obj,
+        pdfBytes,
+    ).then(r => {
+        saveByteArray("RaportPractica.pdf",r)
+    })
 }
 
-export function generateAcord() {
-
+export function generateAcord(student_obj,mentor_obj,prof_obj,practica_obj) {
+    let pdfBytes = getPdfBytes(process.env.PUBLIC_URL + 'AcordPractica.pdf');
+    writeAcord(
+        student_obj,
+        mentor_obj,
+        prof_obj,
+        practica_obj,
+        pdfBytes,
+    ).then(r => {
+        saveByteArray("AcordPractica.pdf",r)
+    })
 }
