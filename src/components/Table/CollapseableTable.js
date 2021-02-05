@@ -41,9 +41,7 @@ class Row extends React.PureComponent {
 
         return (
             <React.Fragment>
-                <TableRow key={row.id} className={this.props.styles.rootTable
-                    //this.props.styles.layout, this.props.styles.paperPage
-                    }>
+                <TableRow key={row.id} className={this.props.styles.rootTable}>
                     <TableCell>
                         <IconButton aria-label="expand row" size="small" onClick={() => this.setOpen()}>
                             {this.state.open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}

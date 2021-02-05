@@ -17,27 +17,13 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    this.props.isPraxisView ? (
-      this.props.isNewPraxis ? (
-        createPraxis()
-          .then((res) => {
-            let praxisId = res.body.id;
-            getEditablePraxisForm(praxisId)
-              .then((res) => {
-                this.setState({ profileData: res.body, praxisId: praxisId });
-              }).catch((ex) => {
-                // TO DO
-              })
-          })
-      ) : (
-
-          getEditablePraxisForm(this.props.location.state.praxisId)
-            .then((res) => {
-              this.setState({ profileData: res.body, praxisId: this.props.location.state.praxisId });
-            }).catch((ex) => {
-              // TO DO
-            })
-        )
+    this.props.isPraxisView && !this.props.isNewPraxis ? (
+      getEditablePraxisForm(this.props.location.state.praxisId)
+        .then((res) => {
+          this.setState({ profileData: res.body, praxisId: this.props.location.state.praxisId });
+        }).catch((ex) => {
+          // TO DO
+        })
     ) : (
         getProfile()
           .then((res) => {
@@ -94,21 +80,33 @@ class Profile extends React.Component {
   }
 
   onClickSave() {
-    this.props.isPraxisView ? (
-      updatePraxis(this.state.praxisId, this.state.profileData)
-        .then(() => {
-          this.props.history.replace('/praxis-history')
-        }).catch((ex) => {
-          // TO DO
+    if (this.props.isPraxisView) {
+      if (this.props.isNewPraxis) {
+        createPraxis().then((res) => {
+          updatePraxis(res.body.id, this.state.profileData)
+            .then(() => {
+              this.props.history.replace('/praxis-history')
+            }).catch((ex) => {
+              // TO DO
+            })
         })
-    ) : (
-        updateProfile(this.state.profileData)
-          .then((res) => {
-            this.setState({ profileData: res.body });
+      }
+      else {
+        updatePraxis(this.state.praxisId, this.state.profileData)
+          .then(() => {
+            this.props.history.replace('/praxis-history')
           }).catch((ex) => {
             // TO DO
           })
-      )
+      }
+    } else {
+      updateProfile(this.state.profileData)
+        .then((res) => {
+          this.setState({ profileData: res.body });
+        }).catch((ex) => {
+          // TO DO
+        })
+    }
   }
 
   render() {
