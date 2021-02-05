@@ -16,13 +16,13 @@ export async function writeTextToPdf(pdfBytes, page_number, text, x_coord, y_coo
     const pdfDoc = await PDFDocument.load(pdfBytes);
 
     const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
-    const size = 50;
+    const size = 14;
     const color = rgb(0,0,0);
 
     const pages = pdfDoc.getPages();
     const current_page = pages[page_number];
 
-    current_page.drawText('This text was added with JavaScript!', {
+    current_page.drawText(text, {
         x: x_coord,
         y: y_coord,
         size: size,
@@ -79,20 +79,47 @@ function saveByteArray(fileName, byte) {
     link.click();
 }
 
-export function generateConventie(testText1) {
+
+export async function writeConventie(student_obj, mentor_obj, prof_obj, pdfBytes) {
+    const pdfDoc = await PDFDocument.load(pdfBytes);
+
+    const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const size = 14;
+    const color = rgb(0, 0, 0);
+
+
+    getPdfWidthHeight(pdfBytes).then(r => {
+        console.log(r);
+    });
+
+
+
+    const pages = pdfDoc.getPages();
+    const current_page = pages[0];
+
+    current_page.drawText(student_obj.nume, {
+        x: 10,
+        y: 10,
+        size: size,
+        font: helveticaFont,
+        color: color
+
+
+
+    });
+    return await pdfDoc.save();
+}
+
+
+export function generateConventie(student_obj,mentor_obj,prof_obj) {
     let pdfBytes = getPdfBytes(process.env.PUBLIC_URL + 'ConventiePractica2020.pdf');
 
-    writeTextToPdf(
+    writeConventie(
+        student_obj,
+        mentor_obj,
+        prof_obj,
         pdfBytes,
-        0,
-        testText1,
-        150,
-        150
     ).then(r => {
-        console.log("written the text");
-        console.log(typeof r)
-        console.log("downloading...");
-
         saveByteArray("ConventiePractica.pdf",r)
     })
 
