@@ -23,7 +23,7 @@ class RegisterForm extends React.PureComponent {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            Înregistrare
           </Typography>
           <form className={this.props.styles.form} noValidate>
             <Grid container spacing={2}>
@@ -34,7 +34,7 @@ class RegisterForm extends React.PureComponent {
                   required
                   fullWidth
                   id="name"
-                  label="Name"
+                  label="Nume întreg"
                   autoFocus
                   value={this.props.registerInfo.name}
                   onChange={this.props.handleChange}
@@ -46,7 +46,7 @@ class RegisterForm extends React.PureComponent {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  label="Email"
                   name="email"
                   autoComplete="email"
                   value={this.props.registerInfo.email}
@@ -59,7 +59,7 @@ class RegisterForm extends React.PureComponent {
                   required
                   fullWidth
                   name="password"
-                  label="Password"
+                  label="Parola"
                   type="password"
                   id="password"
                   autoComplete="current-password"
@@ -73,15 +73,15 @@ class RegisterForm extends React.PureComponent {
                   fullWidth
                   required
                 >
-                  <InputLabel>Position</InputLabel>
+                  <InputLabel>Tip Cont</InputLabel>
                   <Select
                     name="type"
-                    label={this.props.registerInfo.position || 'Position'}
+                    label={this.props.registerInfo.position || 'Tip Cont'}
                     onChange={this.props.handleChange}
                   >
                     <MenuItem value=""></MenuItem>
                     <MenuItem value={1}>Mentor</MenuItem>
-                    <MenuItem value={2}>Professor</MenuItem>
+                    <MenuItem value={2}>Profesor</MenuItem>
                     {/*<MenuItem value={3}>Secretary</MenuItem>*/}
                     <MenuItem value={3}>Student</MenuItem>
                   </Select>
@@ -95,12 +95,12 @@ class RegisterForm extends React.PureComponent {
               className={this.props.styles.submit}
               onClick={this.props.register}
             >
-              Sign Up
+              Înregistrare
           </Button>
             <Grid container justify="flex-end">
               <Grid item>
                 <Link href="/login" variant="body2">
-                  Already have an account? Sign in
+                  Ai deja un cont? Autentifică-te
               </Link>
               </Grid>
             </Grid>

@@ -22,7 +22,7 @@ class ProfessorForm extends React.Component {
                     required
                     id="name"
                     name="name"
-                    label="Name"
+                    label="Nume"
                     fullWidth
                     value={this.props.profileData.name || ''}
                     onChange={this.props.handleChange}
@@ -43,7 +43,7 @@ class ProfessorForm extends React.Component {
                   <TextField
                     id="phone"
                     name="phone"
-                    label="Phnoe number"
+                    label="Telefon"
                     fullWidth
                     value={this.props.profileData.phone || ''}
                     onChange={this.props.handleChange}
@@ -53,7 +53,7 @@ class ProfessorForm extends React.Component {
                   <TextField
                     id="profesie_mentor"
                     name="profesie_mentor"
-                    label="Profession"
+                    label="Profesie"
                     fullWidth
                     value={this.props.profileData.profesie_mentor || ''}
                     onChange={this.props.handleChange}
@@ -63,7 +63,7 @@ class ProfessorForm extends React.Component {
                   <TextField
                     id="functie"
                     name="functie"
-                    label="Position"
+                    label="Funcție"
                     fullWidth
                     value={this.props.profileData.position || ''}
                     onChange={this.props.handleChange}
@@ -74,7 +74,7 @@ class ProfessorForm extends React.Component {
                   <TextField
                     id="scoietate"
                     name="societate"
-                    label="Company"
+                    label="Nume Firmă"
                     fullWidth
                     value={this.props.profileData.societate || ''}
                     onChange={this.props.handleChange}
@@ -84,7 +84,7 @@ class ProfessorForm extends React.Component {
                   <TextField
                     id="cod_fiscal"
                     name="cod_fiscal"
-                    label="Fiscal Code"
+                    label="Cod Fiscal"
                     fullWidth
                     value={this.props.profileData.cod_fiscal || ''}
                     onChange={this.props.handleChange}
@@ -94,7 +94,7 @@ class ProfessorForm extends React.Component {
                   <TextField
                     id="reprezentant_legal"
                     name="reprezentant_legal"
-                    label="Legal representative"
+                    label="Reprezentant legal al firmei"
                     fullWidth
                     value={this.props.profileData.reprezentant_legal || ''}
                     onChange={this.props.handleChange}
@@ -104,7 +104,7 @@ class ProfessorForm extends React.Component {
                   <TextField
                     id="cont"
                     name="cont"
-                    label="Account"
+                    label="Cont Bancar"
                     fullWidth
                     value={this.props.profileData.cont || ''}
                     onChange={this.props.handleChange}
@@ -114,7 +114,7 @@ class ProfessorForm extends React.Component {
                   <TextField
                     id="banca_cont"
                     name="banca_cont"
-                    label="Bank account"
+                    label="Numele Băncii"
                     fullWidth
                     value={this.props.profileData.banca_cont || ''}
                     onChange={this.props.handleChange}
@@ -126,7 +126,7 @@ class ProfessorForm extends React.Component {
                   <TextField
                     id="email_sediu"
                     name="email_sediu"
-                    label="Headquarters email"
+                    label="Email sediu firmă"
                     fullWidth
                     value={this.props.profileData.email_sediu || ''}
                     onChange={this.props.handleChange}
@@ -136,13 +136,13 @@ class ProfessorForm extends React.Component {
                   <TextField
                     id="fax_sediu"
                     name="fax_sediu"
-                    label="Headquarters fax"
+                    label="Fax sediu firmă"
                     fullWidth
                     value={this.props.profileData.fax_sediu || ''}
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
+                {/*<Grid item xs={12}>
                   <TextField
                     id="fax_sediu"
                     name="fax_sediu"
@@ -151,12 +151,12 @@ class ProfessorForm extends React.Component {
                     value={this.props.profileData.fax_sediu || ''}
                     onChange={this.props.handleChange}
                   />
-                </Grid>
+                </Grid>*/}
                 <Grid item xs={12}>
                   <TextField
                     id="oras_sediu"
                     name="oras_sediu"
-                    label="Headquarters city"
+                    label="Oraș (sediu)"
                     fullWidth
                     value={this.props.profileData.oras_sediu || ''}
                     onChange={this.props.handleChange}
@@ -166,7 +166,7 @@ class ProfessorForm extends React.Component {
                   <TextField
                     id="strada_sediu"
                     name="strada_sediu"
-                    label="Headquarters street"
+                    label="Strada (sediu)"
                     fullWidth
                     value={this.props.profileData.strada_sediu || ''}
                     onChange={this.props.handleChange}
@@ -176,7 +176,7 @@ class ProfessorForm extends React.Component {
                   <TextField
                     id="nr_sediu"
                     name="nr_sediu"
-                    label="Headquarters street number"
+                    label="Nr. (Sediu)"
                     fullWidth
                     value={this.props.profileData.nr_sediu || ''}
                     onChange={this.props.handleChange}
@@ -188,7 +188,7 @@ class ProfessorForm extends React.Component {
                   <TextField
                     id="adresa_stagiu_practica"
                     name="adresa_stagiu_practica"
-                    label="Internship address"
+                    label="Adresa unde se va desfașura stagiul de practică"
                     fullWidth
                     value={this.props.profileData.adresa_stagiu_practica || ''}
                     onChange={this.props.handleChange}
@@ -201,7 +201,7 @@ class ProfessorForm extends React.Component {
                 color="primary"
                 onClick={this.props.onClickSave}
                 className={classes.button}
-              >Save
+              >Salveaza
               </Button>
             </React.Fragment>
           </main>

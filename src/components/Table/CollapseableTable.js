@@ -71,22 +71,22 @@ class Row extends React.PureComponent {
                                 <Table size="small" aria-label="purchases">
                                     <TableHead>
                                         <TableRow>
-                                            <TableCell align="center">Name</TableCell>
-                                            <TableCell align="center">Phone</TableCell>
+                                            <TableCell align="center">Nume</TableCell>
+                                            <TableCell align="center">Telefon</TableCell>
                                             <TableCell align="center">Nr. CI</TableCell>
                                             <TableCell align="center">Serie CI</TableCell>
                                             <TableCell align="center">CNP</TableCell>
-                                            <TableCell align="center">Citizenship</TableCell>
-                                            <TableCell align="center">Date of birth</TableCell>
-                                            <TableCell align="center">Place of birth</TableCell>
-                                            <TableCell align="center">District</TableCell>
-                                            <TableCell align="center">City</TableCell>
-                                            <TableCell align="center">Street</TableCell>
-                                            <TableCell align="center">Building nr.</TableCell>
-                                            <TableCell align="center">Apartament nr.</TableCell>
-                                            <TableCell align="center">Year of study</TableCell>
-                                            <TableCell align="center" >Group</TableCell>
-                                            <TableCell align="center">Spcialization</TableCell>
+                                            <TableCell align="center">Cetățenie</TableCell>
+                                            <TableCell align="center">Data nașterii</TableCell>
+                                            <TableCell align="center">Locul nașterii</TableCell>
+                                            <TableCell align="center">Județ</TableCell>
+                                            <TableCell align="center">Oraș</TableCell>
+                                            <TableCell align="center">Strada</TableCell>
+                                            <TableCell align="center">Nr.</TableCell>
+                                            <TableCell align="center">Apartament</TableCell>
+                                            <TableCell align="center">An de studiu</TableCell>
+                                            <TableCell align="center" >Grupa</TableCell>
+                                            <TableCell align="center">Spcializarea</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -117,10 +117,10 @@ class Row extends React.PureComponent {
                                 <Table size="small" aria-label="purchases">
                                     <TableHead>
                                         <TableRow>
-                                            <TableCell align="center">Name</TableCell>
-                                            <TableCell align="center">Phone</TableCell>
+                                            <TableCell align="center">Nume</TableCell>
+                                            <TableCell align="center">Telefon</TableCell>
                                             <TableCell align="center">Fax</TableCell>
-                                            <TableCell align="center">Position</TableCell>
+                                            <TableCell align="center">Poziție</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -139,21 +139,21 @@ class Row extends React.PureComponent {
                                 <Table size="small" aria-label="purchases">
                                     <TableHead>
                                         <TableRow>
-                                            <TableCell align="center">Name</TableCell>
-                                            <TableCell align="center">Phone</TableCell>
-                                            <TableCell align="center">Profession</TableCell>
-                                            <TableCell align="center">Position</TableCell>
-                                            <TableCell align="center">Company</TableCell>
-                                            <TableCell align="center">Fiscal code</TableCell>
-                                            <TableCell align="center">Legal representative</TableCell>
-                                            <TableCell align="center">Account</TableCell>
-                                            <TableCell align="center">Bank account</TableCell>
-                                            <TableCell align="center">Headquarters email</TableCell>
-                                            <TableCell align="center">Headquarters fax</TableCell>
-                                            <TableCell align="center">Headquarters city</TableCell>
-                                            <TableCell align="center">Headquarters street</TableCell>
-                                            <TableCell align="center">Headquarters street number</TableCell>
-                                            <TableCell align="center">Internship address</TableCell>
+                                            <TableCell align="center">Nume</TableCell>
+                                            <TableCell align="center">Telefon</TableCell>
+                                            <TableCell align="center">Profesie</TableCell>
+                                            <TableCell align="center">Poziție</TableCell>
+                                            <TableCell align="center">Firmă</TableCell>
+                                            <TableCell align="center">Cod Fiscal</TableCell>
+                                            <TableCell align="center">Reprezentant legal</TableCell>
+                                            <TableCell align="center">Cont bancar</TableCell>
+                                            <TableCell align="center">Numele băncii</TableCell>
+                                            <TableCell align="center">(Sediu) email</TableCell>
+                                            <TableCell align="center">(Sediu) fax</TableCell>
+                                            <TableCell align="center">(Sediu) oraș</TableCell>
+                                            <TableCell align="center">(Sediu) strada</TableCell>
+                                            <TableCell align="center">(Sediu) număr</TableCell>
+                                            <TableCell align="center">Addresă desf. Practică</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>

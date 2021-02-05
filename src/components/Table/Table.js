@@ -19,13 +19,13 @@ class PraxisTable extends React.PureComponent {
                             <TableHead>
                                 <TableRow>
                                     <TableCell/>
-                                    <TableCell align="center">Student email</TableCell>
-                                    <TableCell align="center">Professor email</TableCell>
-                                    <TableCell align="center">Mentor email</TableCell>
+                                    <TableCell align="center">Email student</TableCell>
+                                    <TableCell align="center">Email profesor</TableCell>
+                                    <TableCell align="center">Email mentor</TableCell>
                                     <TableCell align="center">Status</TableCell>
-                                    <TableCell align="center">Start date</TableCell>
-                                    <TableCell align="center">End date</TableCell>
-                                    <TableCell align="center">Number of credits</TableCell>
+                                    <TableCell align="center">Dată de start</TableCell>
+                                    <TableCell align="center">Dată de sfârșit</TableCell>
+                                    <TableCell align="center">Credite</TableCell>
                                     <TableCell/>
                                     <TableCell/>
                                     <TableCell/>

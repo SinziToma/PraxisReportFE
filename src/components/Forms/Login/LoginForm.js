@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
             <LockOutlinedIcon />
           </Avatar>
           <Button component="h1">
-            Sign in
+            Autentificare
           </Button>
           <form className={styles.form} noValidate>
             <TextField
@@ -30,7 +30,7 @@ class LoginForm extends React.Component {
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label="Email"
               name="email"
               autoComplete="email"
               autoFocus
@@ -43,17 +43,17 @@ class LoginForm extends React.Component {
               required
               fullWidth
               name="password"
-              label="Password"
+              label="Parola"
               type="password"
               id="password"
               autoComplete="current-password"
               value={this.props.loginInfo.password}
               onChange={this.props.handleChange}
             />
-            <FormControlLabel
+            {/*<FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+            />*/}
             <Button
               fullWidth
               variant="contained"
@@ -61,17 +61,17 @@ class LoginForm extends React.Component {
               className={styles.submit}
               onClick={this.props.signIn}
             >
-              Sign In
+              Autentificare
           </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+               {/* <Link href="#" variant="body2">
                   Forgot password?
-              </Link>
+              </Link>*/}
               </Grid>
               <Grid item>
                 <Link href="/register" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                  {"Nu ai un cont? Inregistrează-te"}
                 </Link>
               </Grid>
             </Grid>

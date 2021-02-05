@@ -13,14 +13,14 @@ class StudentForm extends React.Component {
           <main className={classes.layout, classes.paperPage}>
             <React.Fragment>
               <Typography variant="h6" gutterBottom>
-                Profile
+                Profil
               </Typography>
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={3}>
                   <TextField
                     id="name"
                     name="name"
-                    label="Name"
+                    label="Nume"
                     fullWidth
                     value={this.props.profileData.name || ''}
                     onChange={this.props.handleChange}
@@ -30,7 +30,7 @@ class StudentForm extends React.Component {
                   <TextField
                     id="phone"
                     name="phone"
-                    label="Phone"
+                    label="Telefon"
                     type="tel"
                     fullWidth
                     value={this.props.profileData.phone || ''}
@@ -82,7 +82,7 @@ class StudentForm extends React.Component {
                   <TextField
                     id="cetatenie"
                     name="cetatenie"
-                    label="Citizenship"
+                    label="Cetățenie"
                     fullWidth
                     value={this.props.profileData.cetatenie || ''}
                     onChange={this.props.handleChange}
@@ -92,7 +92,7 @@ class StudentForm extends React.Component {
                   <TextField
                     id="data_nasterii"
                     name="data_nasterii"
-                    label="Date of birth"
+                    label="Data nașterii"
                     type="date"
                     fullWidth
                     value={this.props.profileData.data_nasterii || "2000-02-02"}
@@ -103,7 +103,7 @@ class StudentForm extends React.Component {
                   <TextField
                     id="locul_nasterii"
                     name="locul_nasterii"
-                    label="Place of birth"
+                    label="Locul nașterii"
                     fullWidth
                     value={this.props.profileData.locul_nasterii || ''}
                     onChange={this.props.handleChange}
@@ -116,7 +116,7 @@ class StudentForm extends React.Component {
                   <TextField
                     id="judet"
                     name="judet"
-                    label="District"
+                    label="Județ"
                     fullWidth
                     value={this.props.profileData.judet || ''}
                     onChange={this.props.handleChange}
@@ -126,7 +126,7 @@ class StudentForm extends React.Component {
                   <TextField
                     id="oras"
                     name="oras"
-                    label="City"
+                    label="Oraș"
                     fullWidth
                     value={this.props.profileData.oras || ''}
                     onChange={this.props.handleChange}
@@ -136,7 +136,7 @@ class StudentForm extends React.Component {
                   <TextField
                     id="strada"
                     name="strada"
-                    label="Street"
+                    label="Strada"
                     fullWidth
                     value={this.props.profileData.strada || ''}
                     onChange={this.props.handleChange}
@@ -146,7 +146,7 @@ class StudentForm extends React.Component {
                   <TextField
                     id="nr_cladire"
                     name="nr_cladire"
-                    label="Building nr."
+                    label="Nr."
                     fullWidth
                     value={this.props.profileData.nr_cladire || ''}
                     onChange={this.props.handleChange}
@@ -156,7 +156,7 @@ class StudentForm extends React.Component {
                   <TextField
                     id="apartament"
                     name="apartament"
-                    label="Apartament nr."
+                    label="Apartament"
                     fullWidth
                     value={this.props.profileData.apartament || ''}
                     onChange={this.props.handleChange}
@@ -169,7 +169,7 @@ class StudentForm extends React.Component {
                   <TextField
                     id="an_studiu"
                     name="an_studiu"
-                    label="Year of study"
+                    label="An studiu"
                     fullWidth
                     value={this.props.profileData.an_studiu || ''}
                     onChange={this.props.handleChange}
@@ -179,7 +179,7 @@ class StudentForm extends React.Component {
                   <TextField
                     id="grupa"
                     name="grupa"
-                    label="Group"
+                    label="Grupa"
                     fullWidth
                     value={this.props.profileData.grupa || ''}
                     onChange={this.props.handleChange}
@@ -189,7 +189,7 @@ class StudentForm extends React.Component {
                   <TextField
                     id="specializare"
                     name="specializare"
-                    label="Specialization"
+                    label="Specializare"
                     fullWidth
                     value={this.props.profileData.specializare || ''}
                     onChange={this.props.handleChange}
@@ -212,7 +212,7 @@ class StudentForm extends React.Component {
                         <TextField
                           id="professor_email"
                           name="professor_email"
-                          label="Professor email"
+                          label="Email profesor"
                           type="email"
                           fullWidth
                           value={this.props.profileData.professor_form ? this.props.profileData.professor_form.email : ''}
@@ -223,7 +223,7 @@ class StudentForm extends React.Component {
                         <TextField
                           id="mentor_email"
                           name="mentor_email"
-                          label="Mentor email"
+                          label="Email mentor"
                           type="email"
                           fullWidth
                           value={this.props.profileData.mentor_form ? this.props.profileData.mentor_form.email : ''}
@@ -234,11 +234,11 @@ class StudentForm extends React.Component {
                         <TextField
                           id="start_date"
                           name="start_date"
-                          label="Start date"
+                          label="Data de start"
 
                           type="date"
                           fullWidth
-                          value={this.props.profileData.start_date || "2021-02-07"}
+                          value={this.props.profileData.start_date || "2021-02-06"}
                           onChange={this.props.handleChange}
                           InputLabelProps={{
                             shrink: true,
@@ -249,7 +249,7 @@ class StudentForm extends React.Component {
                         <TextField
                           id="end_date"
                           name="end_date"
-                          label="End date"
+                          label="Data de sfârșit"
                           type="date"
                           fullWidth
 
@@ -269,7 +269,7 @@ class StudentForm extends React.Component {
                 color="primary"
                 onClick={this.props.onClickSave}
                 className={classes.button}
-              >Save
+              >Salvează
               </Button>
             </React.Fragment>
           </main>

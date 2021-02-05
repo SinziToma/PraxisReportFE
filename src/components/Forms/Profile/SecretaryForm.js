@@ -13,7 +13,7 @@ class StudentForm extends React.PureComponent {
           <main className={classes.layout, classes.paperPage}>
             <React.Fragment>
               <Typography variant="h6" gutterBottom>
-                Profile
+                Profil
               </Typography>
               <Grid container spacing={3}>
                 <Grid item xs={12}>
@@ -21,7 +21,7 @@ class StudentForm extends React.PureComponent {
                     required
                     id="name"
                     name="name"
-                    label="Name"
+                    label="Nume"
                     fullWidth
                     value={this.props.profileData.name || ''}
                     onChange={this.props.handleChange}
@@ -44,7 +44,7 @@ class StudentForm extends React.PureComponent {
                 color="primary"
                 onClick={this.props.onClickSave}
                 className={classes.button}
-              >Save
+              >Salveaza
               </Button>
             </React.Fragment>
           </main>
