@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ProfileComponentSelector from './ProfileComponentSelector'
-import { getProfile, updateProfile, getEditablePraxisForm } from './../../utils/requests'
+import { getProfile, updateProfile, getEditablePraxisForm, createPraxis, updatePraxis } from './../../utils/requests'
 
 class Profile extends React.Component {
   constructor(props) {
@@ -18,13 +18,25 @@ class Profile extends React.Component {
   componentDidMount() {
     // TO DO FOR PRAXIS EDIT
     this.props.isPraxisView ? (
-      this.setState({profileData: this.props.praxisData, praxisId: this.props.praxisId})
-      // getEditablePraxisForm(profileData.id)
-      //   .then((res) => {
-      //     this.setState({ profileData: res.body });
-      //   }).catch((ex) => {
-      //     // TO DO
-      //   })
+      this.props.isNewPraxis ? (
+        createPraxis()
+          .then((res) => {
+            //this.setState({ profileData: res.body, praxisId: res.body.id })
+            getEditablePraxisForm(res.body.id)
+              .then((res) => {
+                this.setState({ profileData: res.body, praxisId: res.body.id });
+              }).catch((ex) => {
+                // TO DO
+              })
+          })
+      ) : (
+          getEditablePraxisForm(this.props.praxisId)
+            .then((res) => {
+              this.setState({ profileData: res.body, praxisId: res.body.id });
+            }).catch((ex) => {
+              // TO DO
+            })
+        )
     ) : (
         getProfile()
           .then((res) => {
@@ -36,8 +48,6 @@ class Profile extends React.Component {
   }
 
   handleChange({ target }) {
-    // TO DO FOR PRAXIS EDIT 
-    // NOT ANYMORE
     let profileData = this.state.profileData;
     profileData[target.name] = target.value;
 
@@ -48,10 +58,9 @@ class Profile extends React.Component {
 
   onClickSave() {
     this.props.isPraxisView ? (
-      // TO DO
-      updatePraxis(his.state.data)
+      updatePraxis(this.state.praxisId, this.state.profileData)
         .then((res) => {
-          this.setState({ praxisData: res.body });
+          this.setState({ profileData: res.body });
         }).catch((ex) => {
           // TO DO
         })

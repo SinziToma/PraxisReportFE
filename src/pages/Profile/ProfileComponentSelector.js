@@ -14,13 +14,13 @@ class ProfileComponentSelector extends React.Component {
   getComponent() {
     if (this.props.profileData) {
       switch (this.props.profileData.type) {
-        case 'mentorprofile':
+        case 'mentorprofile': case 'mentor_form':
           return <MentorForm {...this.props}/>
-        case 'professorprofile':
+        case 'professorprofile': case 'professor_form':
           return <ProfessorForm {...this.props}/>
-        case 'secretaryprofile':
+        case 'secretaryprofile': case 'secretary_form':
           return <SecretaryForm {...this.props}/>
-        case 'studentprofile':
+        case 'studentprofile': case 'student_form':
           return <StudentForm {...this.props}/>
         default:
           return <div />

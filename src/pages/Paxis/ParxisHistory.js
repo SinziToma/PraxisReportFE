@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 
 import Page from '../../components/Page/Page'
 import PraxisTable from '../../components/Table/Table'
-import { getAllPraxis, updatePraxis } from '../../utils/requests';
+import { getAllPraxis, getEditablePraxisForm, updatePraxis, updatePraxisStatus } from '../../utils/requests';
 
 class PraxisHistory extends React.Component {
     constructor(props) {
@@ -39,14 +39,10 @@ class PraxisHistory extends React.Component {
     }
 
     handleAcceptClick = (praxisData) => {
-        // TO DO status finished or smth
-        praxisData.status = "completed"
-        updatePraxis(praxisData)
-            .then((res) => {
-                this.setState({ praxisData: res.body });
-            }).catch((ex) => {
-
-            });
+        updatePraxisStatus(praxisData.id, true, null)
+        .then((res) => {
+            this.setState({ praxisData: res.body })
+        });
     }
 
     handleDeclineClick = (praxisData) => {
@@ -54,22 +50,15 @@ class PraxisHistory extends React.Component {
     }
 
     handleEditClick = (praxisData) => {
-        getEditablePraxisForm(profileData.id)
+        getEditablePraxisForm(praxisData.id)
         .then((res) => {
             this.props.history.push({
                 pathname: 'praxis-history/edit-praxis',
                 state: { praxisData: res.body, praxisId: profileData.id }
             })
-
-          //this.setState({ profileData: res.body });
         }).catch((ex) => {
           // TO DO
         })
-
-        // this.props.history.push({
-        //     pathname: 'praxis-history/edit-praxis',
-        //     state: { praxisData: praxisData }
-        // })
     }
 
     handleDownloadClick = (praxisData) => {

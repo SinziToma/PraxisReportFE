@@ -83,7 +83,7 @@ class RegisterForm extends React.PureComponent {
                     <MenuItem value={1}>Mentor</MenuItem>
                     <MenuItem value={2}>Professor</MenuItem>
                     <MenuItem value={3}>Secretary</MenuItem>
-                    <MenuItem value={3}>Student</MenuItem>
+                    <MenuItem value={4}>Student</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>

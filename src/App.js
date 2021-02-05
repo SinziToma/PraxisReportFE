@@ -46,7 +46,7 @@ class App extends React.Component {
                             />
                             <Route exact path="/login" component={() => <Login styles={useStyles()} />} />
                             <Route exact path="/register" component={() => <Register styles={useStyles()} />} />
-                            <Route exact path="/new-praxis" component={() => <Profile styles={useStyles()} isPraxisView={true} />} />
+                            <Route exact path="/new-praxis" component={() => <Profile styles={useStyles()} isPraxisView={true} isNewPraxis={true} />} />
                             <Route exact path="/profile" component={() => <Profile styles={useStyles()} isPraxisView={false} />} />
                             <Route exact path="/praxis-history" component={() => <PraxisHistory styles={useStyles()} />} />
                             <Route exact path="/praxis-history/edit-praxis" component={() => <Profile styles={useStyles()} isPraxisView={true}/>} />

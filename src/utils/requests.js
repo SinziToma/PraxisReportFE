@@ -38,11 +38,6 @@ export function updateProfile(profileData) {
 
 
 
-// export function getAllPraxis() {
-//     return request.get(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/get-all`)
-//         .send();
-// }
-
 export function getAllPraxis() {
     return request.get(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/get-by-email`)
         .set('Authorization', localStorage.getItem('authToken'));
@@ -53,7 +48,12 @@ export function createPraxis() {
         .set('Authorization', localStorage.getItem('authToken'));
 }
 
-export function updatePraxis(praxisData) {
+export function updatePraxis(praxisId, profileData) {
+    let praxisData = {
+        id: praxisId,
+        [profileData.type]: profileData
+    }
+
     return request.put(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/update`)
         .set('Authorization', localStorage.getItem('authToken'))
         .send(praxisData);
@@ -66,8 +66,20 @@ export function deletePraxis(profileData) {
 }
 
 export function getEditablePraxisForm(praxisId) {
-    return request.put(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/get-form-by-email`)
+    return request.post(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/get-form-by-email`)
+        .set('Authorization', localStorage.getItem('authToken'))
+        .send({ praxis_id: praxisId});
+}
+
+export function updatePraxisStatus(praxisId, status, message) {
+    let praxisData = {
+        id: praxisId,
+        accepted: status,
+        message: message
+    }
+
+    return request.put(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/update-status`)
         .set('Authorization', localStorage.getItem('authToken'))
         .send(praxisData);
 }
-
+}
