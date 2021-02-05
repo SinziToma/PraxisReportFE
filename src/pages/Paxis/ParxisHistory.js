@@ -18,7 +18,9 @@ class PraxisHistory extends React.Component {
         this.handleAcceptClick = this.handleAcceptClick.bind(this);
         this.handleDeclineClick = this.handleDeclineClick.bind(this);
         this.handleEditClick = this.handleEditClick.bind(this);
-        this.handleDownloadClick = this.handleDownloadClick.bind(this);
+        this.handleRaportClick=this.handleRaportClick.bind(this);
+        this.handleAcordClick=this.handleAcordClick.bind(this);
+        this.handleConventieClick=this.handleConventieClick.bind(this);
     }
 
     componentDidMount() {
@@ -249,7 +251,9 @@ class PraxisHistory extends React.Component {
                     handleAcceptClick={this.handleAcceptClick}
                     handleDeclineClick={this.handleDeclineClick}
                     handleEditClick={this.handleEditClick}
-                    handleDownloadClick={this.handleDownloadClick}
+                    handleRaportClick={this.handleRaportClick}
+                    handleAcordClick={this.handleAcordClick}
+                    handleConventieClick={this.handleConventieClick}
                 />
             </div>
         )

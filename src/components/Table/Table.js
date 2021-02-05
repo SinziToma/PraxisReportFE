@@ -30,21 +30,12 @@ class PraxisTable extends React.PureComponent {
                                     <TableCell/>
                                     <TableCell/>
                                     <TableCell/>
+                                    <TableCell/>
+                                    <TableCell/>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {this.props.rows.map((row) => (
-                                    // <TableRow key={row.id}>
-                                    //     <TableCell align="center">{row.student_form.email}</TableCell>
-                                    //     <TableCell align="center">{row.professor_form.email}</TableCell>
-                                    //     <TableCell align="center">{row.mentor_form.email}</TableCell>
-                                    //     <TableCell align="center">{row.status}</TableCell>
-                                    //     <TableCell align="center">{row.start_date}</TableCell>
-                                    //     <TableCell align="center">{row.end_date}</TableCell>
-                                    //     <TableCell align="center">{row.nr_credite}</TableCell>
-                                    //     <TableCell onClick={() => this.props.handleEditClick(row)}><EditIcon/></TableCell>
-                                    //     <TableCell onClick={() => this.props.handleDownloadClick(row)}><ArrowDownwardIcon/></TableCell>
-                                    // </TableRow>
                                     <Row {...this.props} key={row.id} row={row} />
                                 ))}
                             </TableBody>

@@ -56,18 +56,15 @@ class Row extends React.PureComponent {
                     <TableCell align="center">{row.start_date}</TableCell>
                     <TableCell align="center">{row.end_date}</TableCell>
                     <TableCell align="center">{row.nr_credite}</TableCell>
-                    {/* <TableCell onClick={() => this.props.handleAcceptClick(row)}><EventAvailableIcon/></TableCell>
-                    <TableCell onClick={() => this.props.handleDeclineClick(row)}><EventBusyIcon/></TableCell> */}
-                    {/* <TableCell onClick={() => this.props.handleAcceptClick(row)}><CheckBoxIcon/></TableCell>
-                    <TableCell onClick={() => this.props.handleDeclineClick(row)}><CancelIcon/></TableCell> */}
                     <TableCell onClick={() => this.props.handleAcceptClick(row)}><CheckIcon/></TableCell>
                     <TableCell onClick={() => this.props.handleDeclineClick(row)}><ClearIcon/></TableCell>
                     <TableCell onClick={() => this.props.handleEditClick(row)}><EditIcon/></TableCell>
-                    <TableCell onClick={() => this.props.handleDownloadClick(row)}><SaveAltIcon/></TableCell>
-
+                    <TableCell onClick={() => this.props.handleRaportClick(row)}>Raport <SaveAltIcon/></TableCell>
+                    <TableCell onClick={() => this.props.handleAcordClick(row)}>Acord <SaveAltIcon/></TableCell>
+                    <TableCell onClick={() => this.props.handleConventieClick(row)}>Conventie <SaveAltIcon/></TableCell>
                 </TableRow>
                 <TableRow>
-                    <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={12}>
+                    <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={14}>
                         <Collapse in={this.state.open} timeout="auto" unmountOnExit>
                             <Box margin={1}>
                                 <Typography variant="h6" gutterBottom component="div">
