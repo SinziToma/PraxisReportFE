@@ -75,11 +75,10 @@ export function updatePraxisStatus(praxisId, status, message) {
     let praxisData = {
         id: praxisId,
         accepted: status,
-        message: message
+        status_message: message
     }
 
     return request.put(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/update-status`)
         .set('Authorization', localStorage.getItem('authToken'))
         .send(praxisData);
-}
 }

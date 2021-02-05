@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from "react-router-dom";
 
 import ProfileComponentSelector from './ProfileComponentSelector'
 import { getProfile, updateProfile, getEditablePraxisForm, createPraxis, updatePraxis } from './../../utils/requests'
@@ -16,23 +17,23 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    // TO DO FOR PRAXIS EDIT
     this.props.isPraxisView ? (
       this.props.isNewPraxis ? (
         createPraxis()
           .then((res) => {
-            //this.setState({ profileData: res.body, praxisId: res.body.id })
-            getEditablePraxisForm(res.body.id)
+            let praxisId = res.body.id;
+            getEditablePraxisForm(praxisId)
               .then((res) => {
-                this.setState({ profileData: res.body, praxisId: res.body.id });
+                this.setState({ profileData: res.body, praxisId: praxisId });
               }).catch((ex) => {
                 // TO DO
               })
           })
       ) : (
-          getEditablePraxisForm(this.props.praxisId)
+
+          getEditablePraxisForm(this.props.location.state.praxisId)
             .then((res) => {
-              this.setState({ profileData: res.body, praxisId: res.body.id });
+              this.setState({ profileData: res.body, praxisId: this.props.location.state.praxisId });
             }).catch((ex) => {
               // TO DO
             })
@@ -47,6 +48,42 @@ class Profile extends React.Component {
       )
   }
 
+  // componentDidMount() {
+  //   if (this.props.isPraxisView) {
+  //     if (this.props.isNewPraxis) {
+  //       createPraxis()
+  //         .then((res) => {
+  //           let praxisId = res.body.id;
+  //           getEditablePraxisForm(praxisId)
+  //             .then((res) => {
+  //               this.setState({ profileData: res.body, praxisId: praxisId });
+  //             }).catch((ex) => {
+  //               // TO DO
+  //             })
+  //         })
+  //     } else {
+
+  //       getEditablePraxisForm(this.props.location.state.praxisId)
+  //         .then((res) => {
+
+  //           this.setState({ profileData: res.body, praxisId: this.props.location.state.praxisId });
+  //         })
+  //         .catch((ex) => {
+  //           // TO DO
+  //         })
+  //     }
+  //   } else {
+  //     getProfile()
+  //       .then((res) => {
+  //         this.setState({ profileData: res.body });
+  //       }).catch((ex) => {
+  //         // TO DO
+  //       })
+  //   }
+  // }
+
+
+
   handleChange({ target }) {
     let profileData = this.state.profileData;
     profileData[target.name] = target.value;
@@ -59,8 +96,8 @@ class Profile extends React.Component {
   onClickSave() {
     this.props.isPraxisView ? (
       updatePraxis(this.state.praxisId, this.state.profileData)
-        .then((res) => {
-          this.setState({ profileData: res.body });
+        .then(() => {
+          this.props.history.replace('/praxis-history')
         }).catch((ex) => {
           // TO DO
         })
@@ -87,4 +124,4 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+export default withRouter(Profile);

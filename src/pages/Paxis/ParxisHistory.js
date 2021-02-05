@@ -41,6 +41,7 @@ class PraxisHistory extends React.Component {
 
     handleAcceptClick = (praxisData) => {
         updatePraxisStatus(praxisData.id, true, null)
+        .then(() => getAllPraxis())
         .then((res) => {
             this.setState({ praxisData: res.body })
         });
@@ -55,7 +56,7 @@ class PraxisHistory extends React.Component {
         .then((res) => {
             this.props.history.push({
                 pathname: 'praxis-history/edit-praxis',
-                state: { praxisData: res.body, praxisId: profileData.id }
+                state: { praxisData: res.body, praxisId: praxisData.id }
             })
         }).catch((ex) => {
           // TO DO
