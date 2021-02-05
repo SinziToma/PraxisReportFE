@@ -63,26 +63,29 @@ class PraxisHistory extends React.Component {
     }
 
     handleDownloadClick = (praxisData) => {
-        generateConventie({
+        generateConventie(
+            {
             nume: "Test Name",
             cetatenie: "Grec",
             oras: "Timbuktu",
             strada: "Garii",
             nr_cladire: "15",
-            apartament: "",
+            apartament: "15",
             judet: "Polonia",
             telefon: "123123123",
             email: "test@test.com",
             cnp: "342124132421342134",
             serie_ci: "44",
             nr_ci: "231432",
-            data_nasterii:"15",
+            data_nasterii:"15.15.15",
             locul_nasterii: "Asgard",
             an_studiu: "20",
             grupa: "13",
+            specializarea: "Frecat Menta",
             linie_studiu:"talibans"
 
-        },{
+        },
+            {
             societate:"Amorteala SRL",
             oras_sediu: "Dambovita",
             strada_sediu: "Avioane",
@@ -96,17 +99,25 @@ class PraxisHistory extends React.Component {
             nume_mentor: "Ghita",
             profesie_mentor:"Strungar",
             telefon_mentor:"123",
+            fax_mentor:"123fsdfa",
             email_mentor: "afasdf@asdfa",
             reprezentant_legal: "Ionut",
+            profesie_reprezentant: "Fochist",
             adresa_stagiu_practica: "str. Cirese, Fundeni"
-        },{
+        },
+            {
             nume: "profesorius",
             functie: "paznic la usa",
             telefon: "1232341234",
             fax: "4321412",
             email: "asdfa@asdfa",
             nr_credite: "14"
-        });
+        },
+            {
+                durata: "15 ore",
+                data_inceput: "12.12.12",
+                data_sfarsit: "12.12.13",
+            });
     }
 
     render() {
