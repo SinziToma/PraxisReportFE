@@ -14,6 +14,7 @@
     "@material-ui/icons": "latest",
     "clsx": "latest",
     "express": "^4.17.1",
+    "pdf-lib": "^1.16.0",
     "react": "latest",
     "react-dom": "latest",
     "react-redux": "latest",

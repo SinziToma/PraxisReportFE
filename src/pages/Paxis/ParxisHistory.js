@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import Page from '../../components/Page/Page'
 import PraxisTable from '../../components/Table/Table'
 import { getAllPraxis, getEditablePraxisForm, updatePraxis, updatePraxisStatus } from '../../utils/requests';
+import {generateConventie} from '../../utils/pdf';
 
 class PraxisHistory extends React.Component {
     constructor(props) {
@@ -62,7 +63,7 @@ class PraxisHistory extends React.Component {
     }
 
     handleDownloadClick = (praxisData) => {
-
+        generateConventie("Test TEXT");
     }
 
     render() {
