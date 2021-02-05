@@ -1,4 +1,4 @@
-import {  PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import {PDFDocument, rgb, StandardFonts} from 'pdf-lib';
 
 
 /**
@@ -9,11 +9,11 @@ import {  PDFDocument, rgb, StandardFonts } from 'pdf-lib';
  * @param text The text you want to write
  * @param x_coord
  * @param y_coord
- * @returns {Promise<void>}
+ * @returns {Promise<Uint8Array>}
  */
 export async function writeTextToPdf(pdfBytes, page_number, text, x_coord, y_coord) {
 
-    const pdfDoc = await PDFDocument.load(pdfBytes)
+    const pdfDoc = await PDFDocument.load(pdfBytes);
 
     const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
     const size = 50;
@@ -28,7 +28,9 @@ export async function writeTextToPdf(pdfBytes, page_number, text, x_coord, y_coo
         size: size,
         font: helveticaFont,
         color: color
-    })
+    });
+
+    return await pdfDoc.save();
 
 }
 
@@ -46,5 +48,52 @@ export async function getPdfWidthHeight(pdfBytes) {
     return {'width':width, 'height':height};
 }
 
+/**
+ * Pdfs should live in the public folder (process.env.PUBLIC_URL + '/pdfname.pdf')
+ * @param url
+ * @returns {Uint8Array}
+ */
+export function getPdfBytes(url) {
+    var byteArray = [];
+    var req = new XMLHttpRequest();
+    req.open('GET', url, false);
+    req.overrideMimeType('text\/plain; charset=x-user-defined');
+    req.send(null);
+    if (req.status !== 200) return byteArray;
+    for (var i = 0; i < req.responseText.length; ++i) {
+        byteArray.push(req.responseText.charCodeAt(i) & 0xff)
+    }
+    return Uint8Array.from(byteArray);
+}
 
+/**
+ * Save bytearray in browser
+ * @param fileName
+ * @param byte
+ */
+function saveByteArray(fileName, byte) {
+    let blob = new Blob([byte], {type: "application/pdf"});
+    let link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = fileName;
+    link.click();
+}
 
+export function generateConventie(testText1) {
+    let pdfBytes = getPdfBytes(process.env.PUBLIC_URL + 'ConventiePractica2020.pdf');
+
+    writeTextToPdf(
+        pdfBytes,
+        0,
+        testText1,
+        150,
+        150
+    ).then(r => {
+        console.log("written the text");
+        console.log(typeof r)
+        console.log("downloading...");
+
+        saveByteArray("ConventiePractica.pdf",r)
+    })
+
+}
