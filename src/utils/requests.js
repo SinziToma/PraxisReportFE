@@ -48,14 +48,7 @@ export function createPraxis() {
         .set('Authorization', localStorage.getItem('authToken'));
 }
 
-export function updatePraxis(praxisId, profileData) {
-    let profileType = profileData.type.replace('profile', '_form');
-    
-    let praxisData = {
-        id: praxisId,
-        [profileType]: profileData
-    }
-
+export function updatePraxis(praxisData) {
     return request.put(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/update`)
         .set('Authorization', localStorage.getItem('authToken'))
         .send(praxisData);
@@ -83,4 +76,18 @@ export function updatePraxisStatus(praxisId, status, message) {
     return request.put(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/update-status`)
         .set('Authorization', localStorage.getItem('authToken'))
         .send(praxisData);
+}
+
+export function sendEmail(professorEmail, mentorEmail, praxisId, shouldSendEmail) {
+    let praxisData = {
+        professor_email: professorEmail,
+        mentor_email: mentorEmail,
+        id: praxisId,
+        should_send_email: shouldSendEmail
+    }
+
+    return request.put(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/update-prof-mentor`)
+        .set('Authorization', localStorage.getItem('authToken'))
+        .send(praxisData);
+
 }

@@ -215,7 +215,7 @@ class StudentForm extends React.Component {
                           label="Email profesor"
                           type="email"
                           fullWidth
-                          value={this.props.profileData.professor_form ? this.props.profileData.professor_form.email : ''}
+                          value={this.props.professor_email ? this.props.professor_email : ''}
                           onChange={this.props.handleChange}
                         />
                       </Grid>
@@ -226,7 +226,7 @@ class StudentForm extends React.Component {
                           label="Email mentor"
                           type="email"
                           fullWidth
-                          value={this.props.profileData.mentor_form ? this.props.profileData.mentor_form.email : ''}
+                          value={this.props.mentor_email ? this.props.mentor_email : ''}
                           onChange={this.props.handleChange}
                         />
                       </Grid>
@@ -238,7 +238,7 @@ class StudentForm extends React.Component {
 
                           type="date"
                           fullWidth
-                          value={this.props.profileData.start_date || "2021-02-06"}
+                          value={this.props.start_date || "2021-02-06"}
                           onChange={this.props.handleChange}
                           InputLabelProps={{
                             shrink: true,
@@ -252,11 +252,11 @@ class StudentForm extends React.Component {
                           label="Data de sfârșit"
                           type="date"
                           fullWidth
+                          value={this.props.end_date || "2021-02-14"}
 
                           InputLabelProps={{
                             shrink: true,
                           }}
-                          value={this.props.profileData.end_date ||"2021-02-14"}
                           onChange={this.props.handleChange}
                         />
                       </Grid>
