@@ -82,4 +82,4 @@ export function updatePraxisStatus(praxisId, status, message) {
         .set('Authorization', localStorage.getItem('authToken'))
         .send(praxisData);
 }
-}
+
