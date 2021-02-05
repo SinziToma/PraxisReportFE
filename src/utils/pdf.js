@@ -461,3 +461,12 @@ export function generateConventie(student_obj,mentor_obj,prof_obj,practica_obj) 
     })
 
 }
+
+
+export function generateRaport() {
+
+}
+
+export function generateAcord() {
+
+}
