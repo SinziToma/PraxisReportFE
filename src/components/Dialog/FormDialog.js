@@ -20,10 +20,11 @@ class FormDialog extends React.PureComponent {
                         <TextField
                             autoFocus
                             margin="dense"
-                            id="name"
-                            label="Email Address"
-                            type="email"
+                            id="status_message"
+                            label="Status message"
                             fullWidth
+                            value={this.props.updatePraxisStatus || ''}
+                            onChange={this.props.handleDialogChange}
                         />
                     </DialogContent>
                     <DialogActions>
