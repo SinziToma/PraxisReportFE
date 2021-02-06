@@ -137,8 +137,8 @@ class PraxisHistory extends React.Component {
             },
             {
                 durata:this.checkValue( praxisData['nr_credite']),
-                data_inceput:this.checkValue( praxisData['nr_credite']),
-                data_sfarsit: this.checkValue(praxisData['nr_credite']),
+                data_inceput:this.checkValue( praxisData['start_date']),
+                data_sfarsit: this.checkValue(praxisData['end_date']),
             });
     }
 
@@ -195,8 +195,8 @@ class PraxisHistory extends React.Component {
             },
             {
                 durata:this.checkValue( praxisData['nr_credite']),
-                data_inceput:this.checkValue( praxisData['nr_credite']),
-                data_sfarsit: this.checkValue(praxisData['nr_credite']),
+                data_inceput:this.checkValue( praxisData['start_date']),
+                data_sfarsit: this.checkValue(praxisData['end_date']),
             });
     }
 
@@ -221,6 +221,7 @@ class PraxisHistory extends React.Component {
                 an_studiu: this.checkValue(praxisData['student_form']['an_studiu']),
                 grupa: this.checkValue(praxisData['student_form']['grupa']),
                 specializarea: this.checkValue(praxisData['student_form']['specializare']),
+                facultatea: this.checkValue(praxisData['student_form']['facultate']),
                 linie_studiu:this.checkValue(praxisData['student_form']['facultate'])
 
             },
@@ -254,8 +255,23 @@ class PraxisHistory extends React.Component {
             },
             {
                 durata:this.checkValue( praxisData['nr_credite']),
-                data_inceput:this.checkValue( praxisData['nr_credite']),
-                data_sfarsit: this.checkValue(praxisData['nr_credite']),
+                data_inceput:this.checkValue( praxisData['start_date']),
+                data_sfarsit: this.checkValue(praxisData['end_date']),
+            },
+            {
+                "descriere1": this.checkValue( praxisData['report_form']['descriere1']),
+                "descriere2":  this.checkValue( praxisData['report_form']['descriere2']),
+                "descriere3":  this.checkValue( praxisData['report_form']['descriere3']),
+                "descriere4":  this.checkValue( praxisData['report_form']['descriere4']),
+                "descriere5":  this.checkValue( praxisData['report_form']['descriere5']),
+                "descriere6":  this.checkValue( praxisData['report_form']['descriere6']),
+                "id": 50,
+                "perioada1":  this.checkValue( praxisData['report_form']['perioada1']),
+                "perioada2":  this.checkValue( praxisData['report_form']['perioada2']),
+                "perioada3":  this.checkValue( praxisData['report_form']['perioada3']),
+                "perioada4":  this.checkValue( praxisData['report_form']['perioada4']),
+                "perioada5":  this.checkValue( praxisData['report_form']['perioada5']),
+                "perioada6":  this.checkValue( praxisData['report_form']['perioada6'])
             });
     }
 
