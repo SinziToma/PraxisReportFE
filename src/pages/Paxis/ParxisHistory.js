@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import Page from '../../components/Page/Page';
 import PraxisTable from '../../components/Table/Table';
 import DialogForm from './../../components/Dialog/FormDialog';
-import { getAllPraxis, getEditablePraxisForm, updatePraxis, updatePraxisStatus } from '../../utils/requests';
+import { getAllPraxis, getEditablePraxisForm, updatePraxis, updatePraxisStatus, getAllPraxisObjects } from '../../utils/requests';
 import { generateAcord, generateConventie, generateRaport } from '../../utils/pdf';
 
 class PraxisHistory extends React.Component {
@@ -32,17 +32,27 @@ class PraxisHistory extends React.Component {
     }
 
     componentDidMount() {
-        getAllPraxis()
+        if (localStorage.getItem('profileType') == 'secretaryprofile') {
+            getAllPraxisObjects()
             .then((res) => {
                 this.setState({ praxisData: res.body });
             }).catch((ex) => {
                 //TO DO
             })
+        } else {
+            getAllPraxis()
+                .then((res) => {
+                    this.setState({ praxisData: res.body });
+                }).catch((ex) => {
+                    //TO DO
+                })
+        }
     }
 
     handleAcceptClick = (praxisData) => {
         updatePraxisStatus(praxisData.id, true, null)
-            .then(() => getAllPraxis())
+            .then(() => getAllPraxisObjects()
+            .catch(() => {}))
             .then((res) => {
                 this.setState({ praxisData: res.body })
             });
@@ -54,9 +64,11 @@ class PraxisHistory extends React.Component {
 
     handleDeclineSave = () => {
         updatePraxisStatus(this.state.selectedPraxis.id, false, this.state.updatePraxisStatus)
-            .then(() => {
-                this.handleFormDialogClose();
-            });
+            .then(() => getAllPraxisObjects()
+            .then((res) => {
+                this.setState({ praxisData: res.body, selectedPraxis: null, dialogFormOpen: false });
+            }).catch(() => {}))
+           
     }
 
     handleFormDialogClose = () => {

@@ -18,7 +18,7 @@ class ProfileComponentSelector extends React.Component {
           return <MentorForm {...this.props}/>
         case 'professorprofile': case 'professor_form':
           return <ProfessorForm {...this.props}/>
-        case 'secretaryprofile': case 'secretary_form':
+        case 'secretaryprofile':
           return <SecretaryForm {...this.props}/>
         case 'studentprofile': case 'student_form':
           return <StudentForm {...this.props}/>

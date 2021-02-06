@@ -29,6 +29,7 @@ class Login extends React.Component {
     login(this.state.email, this.state.password)
       .then((res) => {
         localStorage.setItem('authToken', `Bearer ${res.body.auth_token}`)
+        localStorage.setItem('profileType', res.body.profile.type)
         store.dispatch(updateUserInfo({ type: 'LOGIN_SUCCESSFUL', user: res.body}));
         this.props.history.replace('/profile');
       })

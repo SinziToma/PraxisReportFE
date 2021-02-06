@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-class StudentForm extends React.PureComponent {
+class SecretaryForm extends React.Component {
   render() {
     const classes = this.props.styles;
     return (
@@ -18,7 +18,6 @@ class StudentForm extends React.PureComponent {
               <Grid container spacing={3}>
                 <Grid item xs={12}>
                   <TextField
-                    required
                     id="name"
                     name="name"
                     label="Name"
@@ -29,7 +28,6 @@ class StudentForm extends React.PureComponent {
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    required
                     id="email"
                     name="email"
                     label="Email"
@@ -54,4 +52,4 @@ class StudentForm extends React.PureComponent {
   }
 }
 
-export default StudentForm;
+export default SecretaryForm;

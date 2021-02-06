@@ -38,6 +38,11 @@ export function updateProfile(profileData) {
 
 
 
+export function getAllPraxisObjects() {
+    return request.get(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/get-all`)
+        .set('Authorization', localStorage.getItem('authToken'));
+}
+
 export function getAllPraxis() {
     return request.get(`${Constants.PRAXIS_DOCUMENTS_API_URL}praxis/get-by-email`)
         .set('Authorization', localStorage.getItem('authToken'));

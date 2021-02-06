@@ -38,6 +38,9 @@ class Row extends React.PureComponent {
 
     render() {
         let row = this.props.row;
+        let isSecretaryProfile = localStorage.getItem('profileType') == 'secretaryprofile';
+        let colSpan = 14;
+        isSecretaryProfile ? colSpan = 14 : colSpan = 13;
 
         return (
             <React.Fragment>
@@ -54,15 +57,21 @@ class Row extends React.PureComponent {
                     <TableCell align="center">{row.start_date}</TableCell>
                     <TableCell align="center">{row.end_date}</TableCell>
                     <TableCell align="center">{row.nr_credite}</TableCell>
+                    { isSecretaryProfile ? (
                     <TableCell onClick={() => this.props.handleAcceptClick(row)}><CheckIcon/></TableCell>
+                    ) : (<div />)}
+                    { localStorage.getItem('profileType') == 'secretaryprofile' ? (
                     <TableCell onClick={() => this.props.handleDeclineClick(row)}><ClearIcon/></TableCell>
-                    <TableCell onClick={() => this.props.handleEditClick(row)}><EditIcon/></TableCell>
-                    <TableCell onClick={() => this.props.handleRaportClick(row)}>Raport <SaveAltIcon/></TableCell>
-                    <TableCell onClick={() => this.props.handleAcordClick(row)}>Acord <SaveAltIcon/></TableCell>
-                    <TableCell onClick={() => this.props.handleConventieClick(row)}>Conventie <SaveAltIcon/></TableCell>
+                    ) : (<div />)}
+                    { localStorage.getItem('profileType') != 'secretaryprofile' ? (
+                    <TableCell onClick={() => this.props.handleEditClick(row)}><EditIcon /></TableCell>
+                    ) : (<div />)}
+                    <TableCell onClick={() => this.props.handleRaportClick(row)}>Raport <SaveAltIcon /></TableCell>
+                    <TableCell onClick={() => this.props.handleAcordClick(row)}>Acord <SaveAltIcon /></TableCell>
+                    <TableCell onClick={() => this.props.handleConventieClick(row)}>Conventie <SaveAltIcon /></TableCell>
                 </TableRow>
                 <TableRow>
-                    <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={14}>
+                    <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={colSpan}>
                         <Collapse in={this.state.open} timeout="auto" unmountOnExit>
                             <Box margin={1}>
                                 <Typography variant="h6" gutterBottom component="div">
@@ -128,7 +137,7 @@ class Row extends React.PureComponent {
                                             <TableCell align="center">{row.professor_form.name || ''}</TableCell>
                                             <TableCell align="center">{row.professor_form.phone || ''}</TableCell>
                                             <TableCell align="center">{row.professor_form.fax || ''}</TableCell>
-                                            <TableCell align="center">{row.professor_form.position || ''}</TableCell>
+                                            <TableCell align="center">{row.professor_form.functie || ''}</TableCell>
                                         </TableRow>
                                     </TableBody>
                                 </Table>
@@ -142,7 +151,6 @@ class Row extends React.PureComponent {
                                             <TableCell align="center">Name</TableCell>
                                             <TableCell align="center">Phone</TableCell>
                                             <TableCell align="center">Profession</TableCell>
-                                            <TableCell align="center">Position</TableCell>
                                             <TableCell align="center">Company</TableCell>
                                             <TableCell align="center">Fiscal code</TableCell>
                                             <TableCell align="center">Legal representative</TableCell>
@@ -157,23 +165,22 @@ class Row extends React.PureComponent {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                            <TableRow key={row.student_form.id}>
-                                                <TableCell align="center">{row.mentor_form.name || ''}</TableCell>
-                                                <TableCell align="center">{row.mentor_form.phone || ''}</TableCell>
-                                                <TableCell align="center">{row.mentor_form.profesie_mentor || ''}</TableCell>
-                                                <TableCell align="center">{row.mentor_form.functie || ''}</TableCell>
-                                                <TableCell align="center">{row.mentor_form.societate || ''}</TableCell>
-                                                <TableCell align="center">{row.mentor_form.cod_fiscal || ''}</TableCell>
-                                                <TableCell align="center">{row.mentor_form.reprezentant_legal || ''}</TableCell>
-                                                <TableCell align="center">{row.mentor_form.cont || ''}</TableCell>
-                                                <TableCell align="center">{row.mentor_form.banca_cont || ''}</TableCell>
-                                                <TableCell align="center">{row.mentor_form.email_sediu || ''}</TableCell>
-                                                <TableCell align="center">{row.mentor_form.fax_sediu || ''}</TableCell>
-                                                <TableCell align="center">{row.mentor_form.oras_sediu || ''}</TableCell>
-                                                <TableCell align="center">{row.mentor_form.strada_sediu || ''}</TableCell>
-                                                <TableCell align="center">{row.mentor_form.nr_sediu || ''}</TableCell>
-                                                <TableCell align="center">{row.mentor_form.adresa_stagiu_practica || ''}</TableCell>
-                                            </TableRow>
+                                        <TableRow key={row.student_form.id}>
+                                            <TableCell align="center">{row.mentor_form.name || ''}</TableCell>
+                                            <TableCell align="center">{row.mentor_form.phone || ''}</TableCell>
+                                            <TableCell align="center">{row.mentor_form.profesie_mentor || ''}</TableCell>
+                                            <TableCell align="center">{row.mentor_form.societate || ''}</TableCell>
+                                            <TableCell align="center">{row.mentor_form.cod_fiscal || ''}</TableCell>
+                                            <TableCell align="center">{row.mentor_form.reprezentant_legal || ''}</TableCell>
+                                            <TableCell align="center">{row.mentor_form.cont || ''}</TableCell>
+                                            <TableCell align="center">{row.mentor_form.banca_cont || ''}</TableCell>
+                                            <TableCell align="center">{row.mentor_form.email_sediu || ''}</TableCell>
+                                            <TableCell align="center">{row.mentor_form.fax_sediu || ''}</TableCell>
+                                            <TableCell align="center">{row.mentor_form.oras_sediu || ''}</TableCell>
+                                            <TableCell align="center">{row.mentor_form.strada_sediu || ''}</TableCell>
+                                            <TableCell align="center">{row.mentor_form.nr_sediu || ''}</TableCell>
+                                            <TableCell align="center">{row.mentor_form.adresa_stagiu_practica || ''}</TableCell>
+                                        </TableRow>
                                     </TableBody>
                                 </Table>
                             </Box>

@@ -82,18 +82,27 @@ class Profile extends React.Component {
         })
       }
       else {
-        updatePraxis({
-          "id": this.state.praxisId,
-          [this.state.profileData.type.replace('profile', '_form')]: this.state.profileData,
-          "professor_form": {
-            "email": this.state.professor_email
-          },
-          "mentor_form": {
-            "email": this.state.mentor_email
-          },
-          "start_date": this.state.start_date,
-          "end_date": this.state.end_date
-        })
+        let praxisObj;
+        if(localStorage.getItem('profileType') == 'studentprofile') {
+          praxisObj = {
+            "id": this.state.praxisId,
+            [this.state.profileData.type.replace('profile', '_form')]: this.state.profileData,
+            "professor_form": {
+              "email": this.state.professor_email
+            },
+            "mentor_form": {
+              "email": this.state.mentor_email
+            },
+            "start_date": this.state.start_date,
+            "end_date": this.state.end_date
+          }
+        } else {
+          praxisObj = {
+            "id": this.state.praxisId,
+            [this.state.profileData.type.replace('profile', '_form')]: this.state.profileData,
+          }
+        }
+        updatePraxis(praxisObj)
           .then(() => {
             this.props.history.replace('/praxis-history')
           }).catch((ex) => {

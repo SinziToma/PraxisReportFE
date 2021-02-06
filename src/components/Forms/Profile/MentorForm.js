@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 
-class ProfessorForm extends React.Component {
+class MentorForm extends React.Component {
   render() {
     const classes = this.props.styles;
     return (
@@ -17,7 +17,7 @@ class ProfessorForm extends React.Component {
                 Profile
               </Typography>
               <Grid container spacing={3}>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
                     required
                     id="name"
@@ -28,7 +28,7 @@ class ProfessorForm extends React.Component {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
                     required
                     id="email"
@@ -39,7 +39,7 @@ class ProfessorForm extends React.Component {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
                     id="phone"
                     name="phone"
@@ -49,7 +49,7 @@ class ProfessorForm extends React.Component {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
                     id="profesie_mentor"
                     name="profesie_mentor"
@@ -59,18 +59,8 @@ class ProfessorForm extends React.Component {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    id="functie"
-                    name="functie"
-                    label="Position"
-                    fullWidth
-                    value={this.props.profileData.functie || ''}
-                    onChange={this.props.handleChange}
-                  />
-                </Grid>
 
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
                     id="scoietate"
                     name="societate"
@@ -80,7 +70,7 @@ class ProfessorForm extends React.Component {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
                     id="cod_fiscal"
                     name="cod_fiscal"
@@ -90,7 +80,7 @@ class ProfessorForm extends React.Component {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
                     id="reprezentant_legal"
                     name="reprezentant_legal"
@@ -100,7 +90,7 @@ class ProfessorForm extends React.Component {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
                     id="cont"
                     name="cont"
@@ -110,7 +100,7 @@ class ProfessorForm extends React.Component {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
                     id="banca_cont"
                     name="banca_cont"
@@ -122,7 +112,7 @@ class ProfessorForm extends React.Component {
                 </Grid>
 
 
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
                     id="email_sediu"
                     name="email_sediu"
@@ -132,7 +122,7 @@ class ProfessorForm extends React.Component {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
                     id="fax_sediu"
                     name="fax_sediu"
@@ -142,17 +132,7 @@ class ProfessorForm extends React.Component {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    id="fax_sediu"
-                    name="fax_sediu"
-                    label="Headquarters fax"
-                    fullWidth
-                    value={this.props.profileData.fax_sediu || ''}
-                    onChange={this.props.handleChange}
-                  />
-                </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
                     id="oras_sediu"
                     name="oras_sediu"
@@ -162,7 +142,7 @@ class ProfessorForm extends React.Component {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
                     id="strada_sediu"
                     name="strada_sediu"
@@ -172,7 +152,7 @@ class ProfessorForm extends React.Component {
                     onChange={this.props.handleChange}
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
                     id="nr_sediu"
                     name="nr_sediu"
@@ -184,7 +164,7 @@ class ProfessorForm extends React.Component {
                 </Grid>
 
 
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={3}>
                   <TextField
                     id="adresa_stagiu_practica"
                     name="adresa_stagiu_practica"
@@ -211,4 +191,4 @@ class ProfessorForm extends React.Component {
   }
 }
 
-export default ProfessorForm
+export default MentorForm
