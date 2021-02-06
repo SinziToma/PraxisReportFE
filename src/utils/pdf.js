@@ -446,6 +446,277 @@ export async function writeConventie(student_obj, mentor_obj, prof_obj,practica_
     return await pdfDoc.save();
 }
 
+export async function writeAcord(student_obj, mentor_obj, prof_obj,practica_obj, pdfBytes) {
+    const pdfDoc = await PDFDocument.load(pdfBytes);
+
+    const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const size = 7;
+    const color = rgb(0, 0, 0);
+
+
+    getPdfWidthHeight(pdfBytes).then(r => {
+        console.log(r);
+    });
+
+
+
+    const pages = pdfDoc.getPages();
+
+
+    // prima pagina
+    let current_page = pages[0];
+
+
+
+    //mentor
+    current_page.drawText(mentor_obj.societate, {
+        x: 85,
+        y: 638,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.oras_sediu, {
+        x: 235,
+        y: 638,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.strada_sediu, {
+        x: 305,
+        y: 638,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.nr_sediu, {
+        x: 375,
+        y: 638,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.telefon_sediu, {
+        x: 410,
+        y: 638,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.fax, {
+        x: 480,
+        y: 638,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    /*current_page.drawText(mentor_obj.email, {
+        x: 90,
+        y: 460,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });*/
+    current_page.drawText(mentor_obj.cod_fiscal, {
+        x: 83,
+        y: 627,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+    current_page.drawText(mentor_obj.banca_cont, {
+        x: 190,
+        y: 627,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.cont, {
+        x: 295,
+        y: 627,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(mentor_obj.reprezentant_legal, {
+        x: 60,
+        y: 617,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+
+    return await pdfDoc.save();
+}
+
+export async function writeRaport(student_obj, mentor_obj, prof_obj,practica_obj,report_obj, pdfBytes) {
+    const pdfDoc = await PDFDocument.load(pdfBytes);
+
+    const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const size = 14;
+    const color = rgb(0, 0, 0);
+
+
+    getPdfWidthHeight(pdfBytes).then(r => {
+        console.log(r);
+    });
+    const pages = pdfDoc.getPages();
+    // prima pagina
+    let current_page = pages[0];
+
+
+    current_page.drawText(student_obj.nume, {
+        x: 290,
+        y: 697,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+    current_page.drawText(student_obj.facultatea, {
+        x: 130,
+        y: 672,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+    current_page.drawText(student_obj.specializarea, {
+        x: 130,
+        y: 647,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+    current_page.drawText(student_obj.an_studiu, {
+        x: 470,
+        y: 642,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+    current_page.drawText(mentor_obj.nume_mentor, {
+        x: 285,
+        y: 600,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(practica_obj.data_inceput, {
+        x: 265,
+        y: 575,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(practica_obj.data_sfarsit, {
+        x: 265,
+        y: 545,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+    current_page.drawText(report_obj.perioada1, {
+        x: 60,
+        y: 435,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(report_obj.descriere1, {
+        x: 130,
+        y: 435,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+    current_page.drawText(report_obj.perioada2, {
+        x: 60,
+        y: 400,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(report_obj.descriere2, {
+        x: 130,
+        y: 400,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+    current_page.drawText(report_obj.perioada3, {
+        x: 60,
+        y: 365,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(report_obj.descriere3, {
+        x: 130,
+        y: 365,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+    current_page.drawText(report_obj.perioada4, {
+        x: 60,
+        y: 330,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(report_obj.descriere4, {
+        x: 130,
+        y: 330,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+    current_page.drawText(report_obj.perioada5, {
+        x: 60,
+        y: 295,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(report_obj.descriere6, {
+        x: 130,
+        y: 295,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+    current_page.drawText(report_obj.perioada5, {
+        x: 60,
+        y: 260,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+    current_page.drawText(report_obj.descriere6, {
+        x: 130,
+        y: 260,
+        size: size,
+        font: helveticaFont,
+        color: color
+    });
+
+
+
+
+    return await pdfDoc.save();
+}
 
 export function generateConventie(student_obj,mentor_obj,prof_obj,practica_obj) {
     let pdfBytes = getPdfBytes(process.env.PUBLIC_URL + 'ConventiePractica2020.pdf');
@@ -463,10 +734,30 @@ export function generateConventie(student_obj,mentor_obj,prof_obj,practica_obj) 
 }
 
 
-export function generateRaport() {
+export function generateRaport(student_obj,mentor_obj,prof_obj,practica_obj,report_obj) {
+    let pdfBytes = getPdfBytes(process.env.PUBLIC_URL + 'RaportActivitatePractica2019.pdf');
 
+    writeRaport(
+        student_obj,
+        mentor_obj,
+        prof_obj,
+        practica_obj,
+        report_obj,
+        pdfBytes,
+    ).then(r => {
+        saveByteArray("RaportPractica.pdf",r)
+    })
 }
 
-export function generateAcord() {
-
+export function generateAcord(student_obj,mentor_obj,prof_obj,practica_obj) {
+    let pdfBytes = getPdfBytes(process.env.PUBLIC_URL + 'AcordPractica.pdf');
+    writeAcord(
+        student_obj,
+        mentor_obj,
+        prof_obj,
+        practica_obj,
+        pdfBytes,
+    ).then(r => {
+        saveByteArray("AcordPractica.pdf",r)
+    })
 }

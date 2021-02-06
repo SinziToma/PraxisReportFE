@@ -34,25 +34,25 @@ class AppMenu extends React.PureComponent {
               <List>
                 <ListItem onClick={() => this.props.onSelectMenuItem('/profile')}>
                   <ListItemIcon><AccountBox /></ListItemIcon>
-                  {"Profile"}
+                  {"Profil"}
                 </ListItem>
                 <Divider />
                 {
                   localStorage.getItem('profileType') == 'studentprofile' ? (
                   <ListItem onClick={() => this.props.onSelectMenuItem('/new-praxis')}>
                     <ListItemIcon><AddToPhotos /></ListItemIcon>
-                    {"New praxis report"}
+                    {"Practică nouă"}
                   </ListItem>
                   ) : ( <div/> )
                 }
                 <ListItem onClick={() => this.props.onSelectMenuItem('/praxis-history')}>
                   <ListItemIcon><Folder /></ListItemIcon>
-                  {"History"}
+                  {"Istoric"}
                 </ListItem>
                 <Divider />
                 <ListItem onClick={() => this.props.onSelectMenuItem('/logout')}>
                   <ListItemIcon><ExitToApp /></ListItemIcon>
-                  {"Log out"}
+                  {"Deloghează-te"}
                 </ListItem>
               </List>
             </div>

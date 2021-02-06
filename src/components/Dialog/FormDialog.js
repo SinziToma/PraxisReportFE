@@ -12,16 +12,17 @@ class FormDialog extends React.PureComponent {
         return (
             <div>
                 <Dialog open={this.props.open} onClose={this.props.handleClose} aria-labelledby="form-dialog-title">
-                    <DialogTitle id="form-dialog-title">Decline praxis</DialogTitle>
+                    <DialogTitle id="form-dialog-title">De ce?</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
-                            Leave a message.
+                            Lasă o indicație.
                         </DialogContentText>
                         <TextField
                             autoFocus
                             margin="dense"
-                            id="status_message"
-                            label="Status message"
+                            id="indicatie"
+                            label="Indicatii"
+                            type="text"
                             fullWidth
                             value={this.props.updatePraxisStatus || ''}
                             onChange={this.props.handleDialogChange}
@@ -29,10 +30,10 @@ class FormDialog extends React.PureComponent {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.props.handleClose} color="primary">
-                            Cancel
+                            Inchide
                         </Button>
                         <Button onClick={this.props.handleDeclineSave} color="primary">
-                            Save
+                            Trimite
                         </Button>
                     </DialogActions>
                 </Dialog>

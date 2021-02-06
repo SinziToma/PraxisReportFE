@@ -14,7 +14,7 @@ class ProfessorForm extends React.Component {
           <main className={classes.layout, classes.paperPage}>
             <React.Fragment>
               <Typography variant="h6" gutterBottom>
-                Profile
+                Profil
               </Typography>
               <Grid container spacing={3}>
                 <Grid item xs={12}>
@@ -22,7 +22,7 @@ class ProfessorForm extends React.Component {
                     required
                     id="name"
                     name="name"
-                    label="Name"
+                    label="Nume"
                     fullWidth
                     value={this.props.profileData.name || ''}
                     onChange={this.props.handleChange}
@@ -43,7 +43,7 @@ class ProfessorForm extends React.Component {
                   <TextField
                     id="phone"
                     name="phone"
-                    label="Phnoe number"
+                    label="Telefon"
                     fullWidth
                     value={this.props.profileData.phone || ''}
                     onChange={this.props.handleChange}
@@ -63,7 +63,7 @@ class ProfessorForm extends React.Component {
                   <TextField
                     id="functie"
                     name="functie"
-                    label="Position"
+                    label="Funcție"
                     fullWidth
                     value={this.props.profileData.functie || ''}
                     onChange={this.props.handleChange}
@@ -75,7 +75,7 @@ class ProfessorForm extends React.Component {
                 color="primary"
                 onClick={this.props.onClickSave}
                 className={classes.button}
-              >Save
+              >Salveaza
               </Button>
             </React.Fragment>
           </main>
