@@ -12,9 +12,17 @@ class StudentForm extends React.Component {
         <React.Fragment>
           <main className={classes.layout, classes.paperPage}>
             <React.Fragment>
-              <Typography variant="h6" gutterBottom>
-                Profile
-              </Typography>
+              {
+                this.props.isPraxisView ? (
+                  <Typography variant="h6" gutterBottom>
+                    Praxis
+                  </Typography>
+                ) : (
+                    <Typography variant="h6" gutterBottom>
+                      Profile
+                    </Typography>
+                  )
+              }
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={3}>
                   <TextField
