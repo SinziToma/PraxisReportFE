@@ -5,7 +5,7 @@ import Page from '../../components/Page/Page';
 import PraxisTable from '../../components/Table/Table';
 import DialogForm from './../../components/Dialog/FormDialog';
 import { getAllPraxis, getEditablePraxisForm, updatePraxis, updatePraxisStatus } from '../../utils/requests';
-import {generateAcord, generateConventie, generateRaport} from '../../utils/pdf';
+import { generateAcord, generateConventie, generateRaport } from '../../utils/pdf';
 
 class PraxisHistory extends React.Component {
     constructor(props) {
@@ -14,17 +14,21 @@ class PraxisHistory extends React.Component {
         this.state = {
             praxisData: [],
             dialogFormOpen: false,
-            selectedPraxisId: null
+            updatePraxisStatus: '',
+            selectedPraxis: null,
+            profileType: null
         }
 
         this.handleAcceptClick = this.handleAcceptClick.bind(this);
         this.handleDeclineClick = this.handleDeclineClick.bind(this);
         this.handleEditClick = this.handleEditClick.bind(this);
-        this.handleRaportClick=this.handleRaportClick.bind(this);
-        this.handleAcordClick=this.handleAcordClick.bind(this);
-        this.handleConventieClick=this.handleConventieClick.bind(this);
+        this.handleRaportClick = this.handleRaportClick.bind(this);
+        this.handleAcordClick = this.handleAcordClick.bind(this);
+        this.handleConventieClick = this.handleConventieClick.bind(this);
 
-        this.handleDeclineSave=this.handleDeclineSave(this);
+        this.handleDeclineSave = this.handleDeclineSave.bind(this);
+        this.handleFormDialogClose = this.handleFormDialogClose.bind(this);
+        this.handleDialogChange = this.handleDialogChange.bind(this);
     }
 
     componentDidMount() {
@@ -40,38 +44,41 @@ class PraxisHistory extends React.Component {
 
     handleAcceptClick = (praxisData) => {
         updatePraxisStatus(praxisData.id, true, null)
-        .then(() => getAllPraxis())
-        .then((res) => {
-            this.setState({ praxisData: res.body })
-        });
+            .then(() => getAllPraxis())
+            .then((res) => {
+                this.setState({ praxisData: res.body })
+            });
     }
 
     handleDeclineClick = (praxisData) => {
-        this.setState({ selectedPraxisId: praxisData, dialogFormOpen: true});
+        this.setState({ selectedPraxis: praxisData, dialogFormOpen: true });
     }
 
     handleDeclineSave = () => {
-
+        updatePraxisStatus(this.state.selectedPraxis.id, false, this.state.updatePraxisStatus)
+            .then(() => {
+                this.handleFormDialogClose();
+            });
     }
 
     handleFormDialogClose = () => {
-        this.setState({ selectedPraxisId: null, dialogFormOpen: false});
+        this.setState({ selectedPraxis: null, dialogFormOpen: false });
     }
 
-    handleDialogChange = () => {
-
+    handleDialogChange({ target }) {
+        this.setState({ updatePraxisStatus: target.value });
     }
 
     handleEditClick = (praxisData) => {
         getEditablePraxisForm(praxisData.id)
-        .then((res) => {
-            this.props.history.push({
-                pathname: 'praxis-history/edit-praxis',
-                state: { praxisData: res.body, praxisId: praxisData.id }
+            .then((res) => {
+                this.props.history.push({
+                    pathname: 'praxis-history/edit-praxis',
+                    state: { praxisData: res.body, praxisId: praxisData.id }
+                })
+            }).catch((ex) => {
+                // TO DO
             })
-        }).catch((ex) => {
-          // TO DO
-        })
     }
 
     checkValue(inputValue){
@@ -201,7 +208,7 @@ class PraxisHistory extends React.Component {
     }
 
 
-    handleRaportClick= (praxisData) =>{
+    handleRaportClick = (praxisData) => {
         generateRaport(
             {
                 nume: this.checkValue(praxisData['student_form']['name']),
@@ -290,9 +297,12 @@ class PraxisHistory extends React.Component {
                     handleConventieClick={this.handleConventieClick}
                 />
                 <DialogForm {...this.props}
-                open={this.state.dialogFormOpen}
-                handleDeclineSave={this.handleDeclineSave}
-                handleClose={this.handleFormDialogClose}/>
+                    open={this.state.dialogFormOpen}
+                    handleDeclineSave={this.handleDeclineSave}
+                    handleClose={this.handleFormDialogClose}
+                    handleDialogChange={this.handleDialogChange}
+                    updatePraxisStatus={this.state.updatePraxisStatus}
+                />
             </div>
         )
     }

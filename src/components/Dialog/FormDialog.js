@@ -24,6 +24,8 @@ class FormDialog extends React.PureComponent {
                             label="Indicatii"
                             type="text"
                             fullWidth
+                            value={this.props.updatePraxisStatus || ''}
+                            onChange={this.props.handleDialogChange}
                         />
                     </DialogContent>
                     <DialogActions>

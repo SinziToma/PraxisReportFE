@@ -18,6 +18,7 @@ class Profile extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.onClickSave = this.onClickSave.bind(this);
+    this.onClickSendEmail = this.onClickSendEmail.bind(this);
   }
 
   componentDidMount() {
@@ -53,6 +54,10 @@ class Profile extends React.Component {
     }
   }
 
+  onClickSendEmail() {
+    sendEmail(this.state.professor_email, this.state.mentor_email, this.props.location.state.praxisId, true);
+  }
+
   onClickSave() {
     if (this.props.isPraxisView) {
       if (this.props.isNewPraxis) {
@@ -68,8 +73,7 @@ class Profile extends React.Component {
             },
             "start_date": this.state.start_date,
             "end_date": this.state.end_date
-          })
-          .then((res) => sendEmail(this.state.professor_email, this.state.mentor_email, res.body.id, true))  
+          }) 
           .then(() => {
               this.props.history.replace('/praxis-history')
             }).catch((ex) => {
@@ -80,7 +84,15 @@ class Profile extends React.Component {
       else {
         updatePraxis({
           "id": this.state.praxisId,
-          [this.state.profileData.type.replace('profile', '_form')]: this.state.profileData
+          [this.state.profileData.type.replace('profile', '_form')]: this.state.profileData,
+          "professor_form": {
+            "email": this.state.professor_email
+          },
+          "mentor_form": {
+            "email": this.state.mentor_email
+          },
+          "start_date": this.state.start_date,
+          "end_date": this.state.end_date
         })
           .then(() => {
             this.props.history.replace('/praxis-history')
@@ -109,6 +121,7 @@ class Profile extends React.Component {
         end_date={this.state.end_date}
         handleChange={this.handleChange}
         onClickSave={this.onClickSave}
+        onClickSendEmail={this.onClickSendEmail}
         isPraxisView={this.props.isPraxisView || false}
       />
     )

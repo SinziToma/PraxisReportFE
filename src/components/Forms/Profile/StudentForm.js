@@ -231,6 +231,15 @@ class StudentForm extends React.Component {
                         />
                       </Grid>
                       <Grid item xs={12}>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          onClick={this.props.onClickSendEmail}
+                          className={classes.button}
+                        >Send email
+                      </Button>
+                      </Grid>
+                      <Grid item xs={12}>
                         <TextField
                           id="start_date"
                           name="start_date"
