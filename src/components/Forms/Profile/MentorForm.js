@@ -65,7 +65,7 @@ class ProfessorForm extends React.Component {
                     name="functie"
                     label="Funcție"
                     fullWidth
-                    value={this.props.profileData.position || ''}
+                    value={this.props.profileData.functie || ''}
                     onChange={this.props.handleChange}
                   />
                 </Grid>
