@@ -10,10 +10,10 @@ class Profile extends React.Component {
     this.state = {
       profileData: [],
       praxisId: null,
-      professor_email: null,
-      mentor_email: null,
-      start_date: null,
-      end_date: null
+      professor_email: this.props.location.state ? this.props.location.state.professor_email : '',
+      mentor_email: this.props.location.state ? this.props.location.state.mentor_email : '',
+      start_date: this.props.location.state ? this.props.location.state.start_date : '',
+      end_date: this.props.location.state ? this.props.location.state .end_date : ''
     };
 
     this.handleChange = this.handleChange.bind(this);

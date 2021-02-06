@@ -23,6 +23,7 @@ class PraxisTable extends React.PureComponent {
                                     <TableCell align="center">Professor email</TableCell>
                                     <TableCell align="center">Mentor email</TableCell>
                                     <TableCell align="center">Status</TableCell>
+                                    <TableCell align="center">Status message</TableCell>
                                     <TableCell align="center">Start date</TableCell>
                                     <TableCell align="center">End date</TableCell>
                                     <TableCell align="center">Number of credits</TableCell>

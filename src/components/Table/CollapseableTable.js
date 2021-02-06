@@ -39,8 +39,8 @@ class Row extends React.PureComponent {
     render() {
         let row = this.props.row;
         let isSecretaryProfile = localStorage.getItem('profileType') == 'secretaryprofile';
-        let colSpan = 14;
-        isSecretaryProfile ? colSpan = 14 : colSpan = 13;
+        let colSpan = 15;
+        isSecretaryProfile ? colSpan = 15 : colSpan = 14;
 
         return (
             <React.Fragment>
@@ -54,6 +54,7 @@ class Row extends React.PureComponent {
                     <TableCell align="center">{row.professor_form.email}</TableCell>
                     <TableCell align="center">{row.mentor_form.email}</TableCell>
                     <TableCell align="center">{row.status}</TableCell>
+                    <TableCell align="center">{row.status_message}</TableCell>
                     <TableCell align="center">{row.start_date}</TableCell>
                     <TableCell align="center">{row.end_date}</TableCell>
                     <TableCell align="center">{row.nr_credite}</TableCell>

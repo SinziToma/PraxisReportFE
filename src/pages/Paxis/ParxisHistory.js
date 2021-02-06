@@ -84,7 +84,14 @@ class PraxisHistory extends React.Component {
             .then((res) => {
                 this.props.history.push({
                     pathname: 'praxis-history/edit-praxis',
-                    state: { praxisData: res.body, praxisId: praxisData.id }
+                    state: { 
+                        praxisData: res.body, 
+                        praxisId: praxisData.id, 
+                        professor_email: praxisData.professor_form.email,
+                        mentor_email: praxisData.mentor_form.email,
+                        start_date: praxisData.start_date,
+                        end_date: praxisData.end_date
+                    }
                 })
             }).catch((ex) => {
                 // TO DO
